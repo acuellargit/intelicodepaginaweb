@@ -1,0 +1,239 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+    
+	$("#busq_usuario").click(function(e) {
+		e.preventDefault();
+        buscar_usuario();
+    });
+	
+	modificar_usuario();
+	
+	function modificar_usuario()
+	{
+	$("#mod_usuario").click(function(e)
+	{
+	$("#btnUsuario").val("Modificar");
+	var postData = $("#formElem").serializeArray();
+    var formURL =  $("#formElem").attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			$("#btnUsuario").val("Registrar");
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    
+    });
+	}
+	
+	function buscar_usuario()
+	{
+		if($("#usuario").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de cliente.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var usuariox=$("#usuario").val();
+		var postData = { btnUsuario: "Buscar", tipo_busqueda: "3",usuario:usuariox };
+		var formURL= "controladores/usuarios/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				
+				var obj=JSON.parse(data);
+				if(!isEmptyJSON(obj)){
+				$("#usuario").val(obj[0].usuario);
+				$("#pass").val(obj[0].pass);
+				$("#email").val(obj[0].email);
+				}else
+				{
+				$("#dialog").empty();
+				$("#dialog").attr("title","Error");
+				$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>No existe el usuario</p>");
+				$( "#dialog" ).dialog();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+	
+	
+	$("#elim_usuario").click(function(e) {
+        eliminar_usuario();
+    });
+	function eliminar_usuario()
+	{
+		if($("#usuario").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de cliente.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var usu=$("#usuario").val();
+		var postData = { btnUsuario: "Borrar",usuario:usu };
+		var formURL= "controladores/usuarios/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				$("#dialog").empty();
+				$("#dialog").attr("title","Mensaje de servidor");
+				$("#dialog").html("<p>"+data+"</p>");
+				$( "#dialog" ).dialog();
+				$('#formElem').each (function(){
+			  	this.reset();
+				});
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+			
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = $(this).serializeArray();
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de usuarios para el panel administrativo</strong></h2>
+
+ <span class="botoneraSuperior">
+    <button id="mod_usuario" class="modificar" title="Modificar registro"/>
+    <button id="elim_usuario" class="eliminar"  title="Eliminar registro" />
+    </span> 
+<form name="formElem" id="formElem" action="controladores/usuarios/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Específicos <span class="requerido">*</span></label>
+ 
+  <div>
+
+     <span class="tercioBoton">
+     
+    <input id="usuario" type="text" name="usuario" value="" placeholder="Usuario" required="required"/>
+      
+    </span>
+    
+    <span class="botonBuscar">
+    <button id="busq_usuario" class="buscar"  title="Buscar registro"/>
+    </span>
+ 
+    <span class="dostercios">
+    
+    
+      <input type="password" id="pass" name="pass" value="" placeholder="Contraseña" required="required"/>
+        </span>
+        
+         <span class="completo">
+      <input id="email" name="email" value="" placeholder="Email" required="required" />
+    </span>
+        
+  </div>
+ 
+ 
+</li>
+ 
+
+<li class="botones">
+<input type="hidden" id="btnUsuario" name="btnUsuario" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar usuario &rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

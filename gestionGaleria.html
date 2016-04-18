@@ -1,0 +1,203 @@
+
+<script>
+
+	$(document).ready(function(e) {
+		//------------------------------------------------------------------------
+        $("#dialog").dialog({
+		  autoOpen: false,
+		  modal: true
+		});
+		
+		function llamar_confirmacion()
+		{
+			$("#dialog-confirm").html('<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>¿Desea borrar los archivos?</p>');
+			$( "#dialog-confirm" ).dialog({
+			  resizable: false,
+			  height:140,
+			  modal: true,
+			  buttons: {
+				"Borrar": function() {
+				  borrar_archivos();
+				  $( this ).dialog( "close" );
+				},
+				"Cancelar": function() {
+				  $( this ).dialog( "close" );
+				}
+			  }
+			});
+		}
+		//-----------------------------------------------------------------------
+		function borrar_archivos()
+		{
+			//alert("iniciado borrar");
+			$("input:checkbox:checked").each(function(){
+		//cada elemento seleccionado
+			borrar_archivo($(this).attr("title"));
+			buscar_galeria();
+			});
+			buscar_galeria();
+		}
+		//------------------------------------------------------------------------
+		function borrar_archivo(idx)
+		{
+			var postData = { btnGaleria: "Eliminar", id: idx };
+			var formURL= "controladores/galeria/controller.php";
+			$.ajax(
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{	
+					$("#dialogy").empty();
+					$("#dialogy").html("<p>"+data+"</p>");
+					$( "#dialogy" ).dialog();
+					buscar_galeria();
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) 
+				{
+					alert("error al cargar los datos");
+					//if fails      
+				}
+			});	
+		}
+		//------------------------------------------------------------------------
+		buscar_galeria();
+		$("#elim_cliente").click(function(e) {
+			
+			llamar_confirmacion();
+		});
+		//----------------------------------------------------------------
+		function buscar_galeria()
+		{
+		var postData = { btnGaleria: "Buscar", tipo_busqueda: "2" };
+		var formURL= "controladores/galeria/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$(".ver").html(data);
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+		//-------------------------------------------------------------------
+    	
+		$("#buscar").click(function(e) {
+			buscar_galeria();
+            e.preventDefault();
+        });
+		$("#formElem").submit(function(e)
+		{
+	
+		var postData = new FormData($("#formElem")[0]);
+		var formURL =  $(this).attr("action");
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			contentType:false,
+			processData:false,
+			beforeSend: function(){
+				$("#wait").html("<img src='images/loading2.gif' height='35' />");
+				},
+			success:function(data, textStatus, jqXHR) 
+			{
+				//alert(data);
+				$("#wait").empty();
+				$('#formElem').each (function(){
+				  this.reset();
+				});
+				$("#dialogy").html("<p>"+data+"</p>");
+				$( "#dialogy" ).dialog();
+				buscar_galeria();
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				//if fails      
+			}
+		});
+		e.preventDefault(); //STOP default action
+		//e.unbind(); //unbind. to stop multiple form submit.
+	
+		});
+		});
+
+</script>
+
+<div id="aux">
+ 
+<h2><strong>Registro de imagenes </strong></h2>
+ 
+<form name="formElem" id="formElem" action="controladores/galeria/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="slider">Imagenes para galeria <span class="requerido">*</span></label>
+ 
+  <div>
+
+  <span class="completo">
+      <input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar imagen" required="" />
+    
+      
+    </span>
+  <span class="completo">
+
+
+
+  </span>
+
+  </div>
+ 
+</li>
+
+<li class="botones">
+<input type="hidden" name="btnGaleria" value="Registrar" /> 
+  <input id="alta" type="submit" value="Guardar imagen &rarr;" />
+  <div id="wait"></div>
+</li>
+ 
+</ul>
+</form>
+ <div id="dialogy" title="Mensaje de servidor">
+</div>
+<div id="dialog" title="Mensaje de servidor">
+</div>
+<div id="dialog-confirm" title="Confirmacion de borrado">
+
+</div>
+
+</div>
+
+<div id="aux">
+
+ <h2><strong>Imagenes registradas</strong></h2>
+  <span class="botoneraSuperior">
+  
+<input type="hidden" name="btnPublicidad" value="Registrar" /> 
+  <input id="buscar" type="submit"  class="btnBuscar" value="Buscar imagenes &rarr;" />
+    <button id="elim_cliente" class="eliminar"  title="Eliminar registro" />
+    </span> 
+ 
+    </div>
+    
+  
+</div>
+<section class="ver">
+
+</section>
+        
+    

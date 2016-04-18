@@ -1,0 +1,64 @@
+
+<script>
+
+	$(document).ready(function(e) {
+        
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = $(this).serializeArray();
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+        success:function(data, textStatus, jqXHR) 
+        {
+		    alert(data);
+			//$("#formElem").reset();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+
+<div id="aux">
+
+ <h2><strong>Lista de postulantes</strong></h2>
+  <span class="botoneraSuperior">
+  
+<input type="hidden" name="btnVacante" /> 
+
+
+<select name="ok" id="vacanteLista">
+
+</select>
+
+
+
+
+  <input id="alta" type="submit" class="btnBuscar" value="Buscar postulantes &rarr;" />
+    <button id="elim_cliente" class="eliminar"  title="Eliminar registro" />
+    </span> 
+ 
+    </div>
+    
+    
+    <!-- Aqui se van a ver los cargos disponibles-->

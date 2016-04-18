@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Localizar distribuidores</title>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="css/mapa.css" media="all" />
+    <link rel="stylesheet" href="css/opciones.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script>
+	$(document).ready(function(e) {
+		buscarProvedor();
+        function buscarProvedor(){
+		var postData = { btnDistribuidor: "Buscar", tipo_busqueda: "2"};
+		var formURL= "controladores/distribuidor/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function(){
+			$(".listCliente").html("<img src='images/loading2.gif' />");
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$(".listCliente").empty();
+				$(".listCliente").html(data);
+				
+				
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+		
+		
+    });
+    </script>
+</head>
+<body>
+	
+	
+	<div id="wrapper">
+		<h3 align="center" style="color:#F60">Red de distribuidores ></h3>
+
+		<!--<div id="frmDistribuidores"></div>-->
+        <div class="listCliente">
+        <!--
+  <ul>
+    <li>
+        <img src="img/Contact_Card.png" height="12"/ > <strong >NOMBRE: </strong> Ing. Edith del Carmen Cayetano Nolasco <br/>
+      <img src="img/Location.png" height="12"/><strong>DIRECCION:</strong> Juan escutia #38. Col centro. C.P 96079<br/>
+      <img src="img/iPhone.png" height="12"/><strong>CONTACTO: </strong><BR />
+      <p align="justify">
+      Telefono: 2455958<BR />
+     Celular: 9241129087<BR />
+     Email: abe361@hotmail.com<BR />
+      </p>
+    </li>
+    
+     <li>
+        <img src="img/Contact_Card.png" height="12"/ > <strong >NOMBRE: </strong> Ing. Edith del Carmen Cayetano Nolasco <br/>
+      <img src="img/Location.png" height="12"/><strong>DIRECCION:</strong> Juan escutia #38. Col centro. C.P 96079<br/>
+      <img src="img/iPhone.png" height="12"/><strong>CONTACTO: </strong><BR />
+      <p align="justify">
+      Telefono: 2455958<BR />
+     Celular: 9241129087<BR />
+     Email: abe361@hotmail.com<BR />
+      </p>
+    </li>
+    
+     <li>
+        <img src="img/Contact_Card.png" height="12"/ > <strong >NOMBRE: </strong> Ing. Edith del Carmen Cayetano Nolasco <br/>
+      <img src="img/Location.png" height="12"/><strong>DIRECCION:</strong> Juan escutia #38. Col centro. C.P 96079 <br/>
+      <img src="img/iPhone.png" height="12"/><strong>CONTACTO: </strong><BR />
+      <p align="justify">
+      Telefono: 2455958<BR />
+     Celular: 9241129087<BR />
+     Email: abe361@hotmail.com<BR />
+      </p>
+    </li> 
+    
+       </ul>-->
+  </div>
+       
+	</div>
+	<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript">
+		(function() {
+			window.onload = function(){
+				var mexico = new google.maps.LatLng(20.40021514499791, -105.1576357421875);
+				var opciones = {
+					zoom : 4,
+					center: mexico,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				var div = document.getElementById('mapa');
+				var map = new google.maps.Map(div, opciones);
+				var infowindow = new google.maps.InfoWindow({
+					content: ''
+				});
+				
+				var marcadores = [
+					{
+						position:{
+							lat : 17.943128938299655, 
+							lng : -94.9169130859375
+						},
+						contenido: "Hola, ¡estoy en Acayucan!"
+					},
+					{
+						position:{
+							lat :18.642661133023605, 
+							lng : -91.81567864990234
+						},
+						contenido: "Distribuidor Cd. del Carmen"
+					}						
+				];
+				for (var i = 0, j = marcadores.length; i < j; i++) {
+					var contenido = marcadores[i].contenido;
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(marcadores[i].position.lat, marcadores[i].position.lng),
+						map: map
+					});
+					(function(marker, contenido){						
+						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.setContent(contenido);
+							infowindow.open(map, marker);
+						});
+					})(marker,contenido);
+				}				
+			}
+		})();
+	</script>-->
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Liberar software</title>
+<link rel="stylesheet" href="css/formulario.css" >
+<link rel="stylesheet" href="css/cargar.css" >
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script>
+	$(document).ready(function(e) {
+		
+		
+		function password(length, special) {
+		var iteration = 0;
+		var password = "";
+		var randomNumber;
+		if(special == undefined){
+		var special = false;
+		}
+		while(iteration < length){
+		randomNumber = (Math.floor((Math.random() * 100)) % 94) + 33;
+		if(!special){
+		if ((randomNumber >=33) && (randomNumber <=47)) { continue; }
+		if ((randomNumber >=58) && (randomNumber <=64)) { continue; }
+		if ((randomNumber >=91) && (randomNumber <=96)) { continue; }
+		if ((randomNumber >=123) && (randomNumber <=126)) { continue; }
+		}
+		iteration++;
+		password += String.fromCharCode(randomNumber);
+		}
+		return password;
+		}
+		
+		
+		function liberar_software(idx,clavex,correox)
+		{
+			var r=$("#texto").val();
+			
+			//alert(usuario);
+			var postData={ btnVenta: "Modificar",id:idx,status:1,clave:clavex,email:correox };
+			//var postData = $(this).serializeArray();
+			var formURL = "controladores/clienteventa/controller.php";
+			$.ajax(
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{
+					
+				alert(data);
+				
+				},
+				error: function(jqXHR, textStatus, errorThrown) 
+				{
+					//if fails      
+				}
+			});
+		}
+		
+		function mostrar_detalle_venta(idx,correo)
+		{
+		
+		var postData = { btnVenta: "Buscar", tipo_busqueda: "2",id:idx};
+		var formURL= "controladores/clienteventa/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{	
+				
+				//$("#frmPago").empty();
+				var response = '<div>' + data + '</div> <input id="btnLiberar" type="submit"  name="'+correo+'" title="'+idx+'" value="Liberar pago" />';
+				$.colorbox({title:'Lista productos pendientes por pagar',width:'700px',height:'500px',html:response,close:'Cerrar Ventana'});
+				$("#btnLiberar").click(function(e) {
+					var t=$(this).prop("title");
+					var correo=$(this).prop("name");
+                    var ctx=password(10);
+					ctx+=t;
+					var clave= $.md5(ctx);
+					
+					liberar_software(t,clave,correo);
+                });
+				
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	    
+		}
+		
+    	var postData = { btnVenta: "Buscar", tipo_busqueda: "3"};
+		var formURL= "controladores/clienteventa/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			var rst='<div class="bubblingG">'+
+				'<span id="bubblingG_1">'+
+				'</span>'+
+				'<span id="bubblingG_2">'+
+				'</span>'+
+				'<span id="bubblingG_3">'+
+				'</span></div>';
+				$("#frmPago").html(rst);
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				//$("#frmPago").empty();
+				$("#frmPago").html(data);
+				
+				$(".btnPago").click(function(e) {
+				
+                   mostrar_detalle_venta($(this).prop("title"),$(this).prop("id")); 
+                });
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	    
+    });
+	
+</script>
+
+</head>
+<body>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+
+ 
+<h2><strong>Registro de liberacion de pagos</strong></h2>
+
+ <span class="botoneraSuperior">
+   
+    <button id="elim_pago" class="eliminar"  title="Cancelar solicitud" />
+    <button id="actualizar"   title="Buscar solicitud" value="Actualizar" />
+    
+</span> 
+
+<div id="frmPago">
+	
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+@charset "utf-8";
+ /* @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+CSS Document */
+
+
+#completo
+{
+	height:700px;
+	width:100%;
+	border-top: solid 1px #bcbbbb;
+	padding:20px;
+}
+
+#completoSoporte{
+	width:100%;
+}
+
+
+
+#completoSoporte2{
+	width:100%;
+}
+
+
+
+#clientes_{
+overflow-y: scroll;
+height:650px;
+width:100%;
+}
+
+#inteli_{
+overflow-y: scroll;
+height:400px;
+width:100%;
+padding-right:50px;
+}
+
+#completo #aside
+{
+	 width: 200px;
+    float: left;
+    overflow: auto;
+    padding-bottom: 60px;
+    padding-top:30px;
+	
+  border-right:solid 1px #bcbbbb;
+
+}
+
+#completo #menuTab
+{
+	  float: right;
+    width: 79%;
+}
+
+
+#menuSoluciones{ width:20%; height:500px; float:left; padding-top:4%;}
+
+#descripcionmodulo{ width:60%; float:left;
+padding-left:5%;
+padding-top:8%; 
+
+	text-align:justify;
+}
+
+#descripcionmoduloInicio
+{ width:80%; float:left;
+padding-left:5%;
+padding-top:8%;
+padding-right:10px;
+#completoSoporte{
+	width:100%;
+	background-color:#FC3;
+}
+	text-align:justify;
+}
+
+#principal #imagen{ width:50%; height:150px; float:left;
+padding-left:5%;
+padding-top:5%; }
+
+
+#completoCar
+{
+	width:100%;
+	padding:20px;
+	
+}
+
+#car{
+width:50%; 
+float:left;
+padding-left:5%;
+padding-top:0%;
+height:auto !important;
+}
+
+
+#tituloNota
+{
+	width:100%;
+	padding-bottom:5px;
+	padding-top:5px;
+	padding-left:5px;
+	background-color:#F60;
+	color:#FFF;
+}
+
+
+
+#modulos{
+	width:25%;
+	margin-left:72%;
+	height:450px;
+	background-color:#CCC;
+	font-size:12px;
+	padding-top:10px;
+	
+	}
+	
+	
+	
+	#modulosForm{
+	width:40%;
+	margin-left:40%;
+	font-size:14px;
+	padding:20px;
+	height:300px;
+	}
+	
+
+
+	
+	#modulos p { padding-left:-10px;
+	padding-right:5%;
+font-family: "Source Sans Pro", Segoe UI, Arial;
+	font-size:12px;
+	
+	}
+	
+	#modulos h3 span{ margin-left:60px;
+font-family: "Source Sans Pro", Segoe UI, Arial;
+	font-size:12px;
+	text-align:left;
+	width:100%;
+	margin-top:10px;
+	
+	}
+	
+	
+	
+	
+	#modulos ul{list-style:none; background:none;
+	font-family: "Source Sans Pro", Segoe UI, Arial;
+	 color:#333;
+	position:absolute;
+	margin-left:-2px;
+	margin-top:-5px;
+	width:180px;
+	
+	}  
+	
+	/*#c4dcdc*/
+	
+	#modulos li{background:#F60;
+	display:block;
+	list-style:none;margin:5px 0; border:1px dashed #fafafa;
+	padding:10px;
+	text-align:center;
+	
+	}
+	
+	#modulos li:hover
+	{
+		cursor:pointer;
+		padding:18px;
+		font-size:13px;
+    	text-align:center;
+		background-color:#09F;
+		color:#FFF;
+	
+	}
+	
+	
+
+#avatarImage{padding:2px;border:1px solid #e7e7e7;background:#fff;float:left;margin:0 4px 7px 3px;}
+
+
+	.avatarRound{-webkit-border-radius:100px;-moz-border-radius:100px;
+	
+	border-radius:100px;}           
+	 #modulos li img{padding:0px;display:block; margin-left:-500px;}    
+	#modulos li span{margin-top:4px;color: #fff;display: block;font-size: 12px;padding:2px 0 6px 0} 
+	 #modulos li a{color:#064f4c;text-shadow:1px 1px 1px #fff}
+	 #modulos li a:hover{margin-left:4px;}
+	 
+#aside #vertical {
+	
+	width:200px;
+	margin-top:-30px;
+	margin-left:-10px;
+	
+font-size: 15px;
+  line-height: 15px;
+  text-transform: uppercase;
+  text-align: left;
+  z-index:1000;
+  
+}
+
+#vertical > ul {
+  width: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background: #ffffff;
+ /* border-bottom: 3px solid #d9ced2;*/
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+
+#vertical > ul li {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+}
+
+#vertical > ul li a {
+	
+	width:160px;
+  display: block;
+  padding:12px 24px 11px 24px;
+  
+  text-decoration: none;
+  /*color: #747474;*/
+  text-shadow: 0px 1px 0px #fff;
+}
+#vertical > ul li a.active,
+#vertical > ul li a:hover {
+  background:#F00;
+  color: #fff;
+  text-shadow: 0px 1px 0px #000;
+ 
+  
+}
+
+
+ol{
+    counter-reset: li;
+    list-style: none;
+    *list-style: decimal;
+    padding: 0;
+    margin-bottom: 4em;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	font-family: "Source Sans Pro", Segoe UI, Arial;
+	font-size:12px;
+}
+ 
+ol ol{margin: 0 0 0 2em;
+}
+
+.lista-rectangular li{
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em .8em;
+    *padding: .4em;
+    margin: .5em 0 .5em 2.5em;
+    background: #FCCA8F;
+    color: #444;
+    text-decoration: none;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;   
+}
+ 
+.lista-rectangular li:hover{
+    background: #FDECD0;
+}   
+ 
+.lista-rectangular li:before{
+    content: counter(li);
+    counter-increment: li;
+    position: absolute; 
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #F60;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+}
+ 
+.lista-rectangular li:after{
+    position: absolute; 
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -ms-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;               
+}
+ 
+.lista-rectangular li:hover:after{
+    left: -.5em;
+    border-left-color: #F60;                
+}
+ 
+ 
+/*lista Clientes*/
+
+.listCliente ul {
+  list-style-type: none;
+  width: 700px;
+}
+ 
+.listCliente strong {
+  font: bold 12px/1 Helvetica, Verdana, sans-serif;
+}
+ 
+.listCliente li img {
+  float: left;
+  margin: 0 15px 0 0;
+}
+ 
+.listCliente li p {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+ 
+.listCliente li {
+  padding: 10px;
+  overflow: auto;
+}
+ 
+.listCliente li:hover {
+  background: #eee;
+  cursor: pointer;
+}
+
+/*Estilo venta*/
+
+
+/* Main container */
+.cbp-vm-switcher {
+	padding: 20px;
+	border: 3px solid #47a3da;
+	
+}
+
+/* options/select wrapper with switch anchors */
+.cbp-vm-options {
+	text-align:right;
+	padding-bottom: 10px;
+	border-bottom: 3px solid #47a3da;
+	font-size:12px;
+	padding-right:10px;
+}
+
+.cbp-vm-options a {
+	display: inline-block;
+	width: 180px;
+	height: 30px;
+	overflow: hidden;
+	white-space: nowrap;
+	color: #d0d0d0;
+	
+	margin: 2px;
+}
+
+.cbp-vm-options a:hover,
+.cbp-vm-options a.cbp-vm-selected {
+	color: #47a3da;
+}
+
+.cbp-vm-options a:before {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 12px;
+	text-align: center;
+	display: inline-block;
+}
+
+/* General style of switch items' list */
+
+.cbp-vm-switcher ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* Clear eventual floats */
+.cbp-vm-switcher ul:before, 
+.cbp-vm-switcher ul:after { 
+	content: " "; 
+	display: table; 
+}
+
+.cbp-vm-switcher ul:after { 
+	clear: both; 
+}
+
+.cbp-vm-switcher ul li {
+	display: block;
+	position: relative;
+}
+
+.cbp-vm-image {
+	width:150px;
+	display: block;
+	margin: 0 auto;
+	
+	margin-bottom:10px;
+}
+
+.cbp-vm-image img {
+	display: inline-block;
+	max-width: 50%;
+	border: none;
+}
+
+.cbp-vm-title {
+	margin: 0;
+	padding: 0;
+}
+
+.cbp-vm-price {
+	color: #c0c0c0;
+}
+
+.cbp-vm-add {
+	color: #fff;
+	background: #47a3da;
+	padding: 10px 20px;
+	border-radius: 2px;
+	margin: 30px  0;
+	padding-left:38px;
+	display: inline-block;
+	transition: background 0.2s;
+}
+
+.cbp-vm-add:hover {
+	color: #fff;
+	background: #02639d;
+	cursor:pointer;
+}
+
+.cbp-vm-add:before {
+	margin-right: 5px;
+}
+
+/* Common icon styles */
+.cbp-vm-icon:before {
+	content:">";
+/*	font-family: 'fontawesome';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;*/
+}
+
+.cbp-vm-grid:before {
+	content: "\f00a";
+}
+
+.cbp-vm-list:before {
+	content: "\f00b";
+}
+
+.cbp-vm-add:before {
+	content:url(../img/dow.png);
+	position:absolute;
+	margin-left:-35px;
+	margin-top:-5px;
+}
+
+/* Individual view mode styles */
+
+/* Large grid view */
+.cbp-vm-view-grid ul {
+	text-align: center;
+}
+
+.cbp-vm-view-grid ul li {
+	width: 18%;
+	text-align: center;
+	padding: 25px;
+	margin: 20px 0 0;
+	display: inline-block;
+	min-height: 320px;
+	vertical-align: top;
+}
+
+.cbp-vm-view-grid .cbp-vm-title {
+	font-size: 1em;
+}
+
+.cbp-vm-view-grid .cbp-vm-details {
+	max-width: 300px;
+	min-height: 70px;
+	margin: 0 auto;
+} 
+
+.cbp-vm-view-grid .cbp-vm-price {
+	margin: 10px 0;
+	font-size: 1.5em;
+}
+
+
+/* List view */
+.cbp-vm-view-list li {
+	padding: 20px 0;
+	white-space: nowrap;
+}
+
+.cbp-vm-view-list .cbp-vm-image,
+.cbp-vm-view-list .cbp-vm-title,
+.cbp-vm-view-list .cbp-vm-details,
+.cbp-vm-view-list .cbp-vm-price,
+.cbp-vm-view-list .cbp-vm-add {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.cbp-vm-view-list .cbp-vm-image {
+	width: 5%;
+}
+
+.cbp-vm-view-list .cbp-vm-title {
+	font-size: 1.3em;
+	padding: 0 10px;
+	white-space: normal;
+	width: 23%;
+}
+
+.cbp-vm-view-list .cbp-vm-price {
+	font-size: 1.3em;
+	width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-details {
+	width: 40%;
+	padding: 0 15px;
+	overflow: hidden;
+	white-space: normal;
+}
+
+.cbp-vm-view-list .cbp-vm-add {
+	margin: 0;
+}
+
+#cuadro{
+	margin-left:200px;
+}
+
+#frmCotizador
+{
+	padding:10px;
+}
+
+#imagen1
+{
+	margin-top:-25px;
+	margin-left:300px;
+}
+
+#totalGlobal
+{
+	width:300px;
+}
+
+/*Enlaces a modulos*/
+
+
+#VerRecHumanos
+{
+	position: absolute;
+	margin-top: -410px;
+	margin-left: 80px;
+	width: 73px;
+	height: 25px;
+}
+
+#VerRecHumanos:hover
+{
+	cursor:pointer;
+}
+
+#VerNomina
+{
+	position: absolute;
+	margin-top: -400px;
+	margin-left: 620px;
+	width: 73px;
+	height: 25px;
+}
+
+#VerNomina:hover
+{
+	cursor:pointer;
+}
+
+
+#VerVentas
+{
+	position: absolute;
+	margin-top: -100px;
+	margin-left: 80px;
+	width: 73px;
+	height: 25px;
+}
+
+#VerVentas:hover
+{
+	cursor:pointer;
+}
+
+#VerAdministrativo
+{
+	position: absolute;
+	margin-top: -100px;
+	margin-left: 620px;
+	width: 100px;
+	height: 25px;
+}
+
+#VerAdministrativo:hover
+{
+	cursor:pointer;
+}
+
+
+#VerObras
+{
+	position: absolute;
+	margin-top: -250px;
+	margin-left: 620px;
+	width: 100px;
+	height: 25px;
+}
+
+#VerObras:hover
+{
+	cursor:pointer;
+}
+
+#VerAlmacen
+{
+	position: absolute;
+	margin-top: -40px;
+	margin-left: 360px;
+	width: 100px;
+	height: 25px;
+}
+
+#VerAlmacen:hover
+{
+	cursor:pointer;
+}
+

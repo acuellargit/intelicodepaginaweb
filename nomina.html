@@ -1,0 +1,110 @@
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+
+
+<script>
+$(document).ready(function(e) {
+	
+			$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+			$('#nomina1').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Recibos de Nominas ></h3><span id="nomina1Imagen"><img class="box_imgpeque" src="img/imagenes/nomina1.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#nomina1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/nomina1.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+			$('#nomina2').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Listados de timbres ></h3><span id="nomina2Imagen"><img class="box_imgpeque" src="img/imagenes/nomina2.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#nomina2Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/nomina2.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+			$('#nomina3').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Recibos de pagos timbrados ></h3><span id="nomina3Imagen"><img class="box_imgpeque" src="img/imagenes/nomina3.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#nomina3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/nomina3.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+			$('#nomina4').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Resumen de infonavit></h3><span id="nomina4Imagen"><img class="box_imgpeque" src="img/imagenes/nomina4.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#nomina4Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/nomina4.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+})
+</script>
+
+
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/nomina.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Control de Nóminas ></h3>
+<p>
+Permite tener de manera más exacta el monto total de cada nomina generada ya sea de forma semanal, quincenal o mensual, con el objetivo de mantener un historial de cada monto generado. Proporciona a los usuarios que están a cargo de la administración una herramienta versatil, eficaz e inteligente.
+</p>
+
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li>Elabora Lista de Rayas Quincenales, Catorcenales</li>
+    <li>Elabora Timbrados de Nominas y Cancelación de los Mismos</li>
+    <li>Genera Concentrados de Información ISR, ISPT y Cálculos Impuestos</li>
+    <li>Elabora Control  de Recursos Asignados por Empleados</li>
+    <li>Elabora Graficas de Productividad y Reportes Gerenciales</li>   
+    <li>Enlace a módulos de Recursos Humanos, Control Administrativo, para Requisición y Administración de personal y Administración de Gastos </li>   
+       
+</ol>
+
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<ul>
+<li id="nomina1">Recibos de Nominas</li>
+<li id="nomina2">Listados de timbres</li>
+<li id="nomina3">Recibos de pagos timbrados</li>
+<li id="nomina4">Resumen de infonavit</li>
+<li id="nomina5">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>

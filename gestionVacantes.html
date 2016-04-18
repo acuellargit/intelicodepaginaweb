@@ -1,0 +1,93 @@
+
+<script>
+
+	$(document).ready(function(e) {
+        
+		$('#postulante').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('gestionPostulante.html');
+		});
+	
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = $(this).serializeArray();
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+        success:function(data, textStatus, jqXHR) 
+        {
+		    alert(data);
+			//$("#formElem").reset();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de vacantes</strong></h2>
+ 
+<form name="formElem" id="formElem" action="controladores/vacante/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Vacante disponible <span class="requerido">*</span></label>
+ 
+  <div>
+
+  <span class="completo">
+      <input id="cargo" name="cargo" voalue="" placeholder="Cargo de la vacante" required="" />
+    </span>
+  <span class="completo">
+  <textarea id="requisitos" name="requisitos" value="" placeholder="Requisitos" required="" />
+  </textarea>
+    </span>
+
+  </div>
+ 
+</li>
+
+<li class="botones">
+<input type="hidden" name="btnVacante" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar vacante &rarr;" />
+  <input id="postulante" type="submit" value="Consultar postulantes &rarr;" />
+</li>
+ 
+</ul>
+</form>
+ 
+</div>
+<div id="aux">
+
+ <h2><strong>Vacantes registradas</strong></h2>
+  <span class="botoneraSuperior">
+ 
+  <input id="alta" type="submit" class="verVacante" value="Buscar vacantes &rarr;" />
+    <button id="elim_cliente" class="eliminar"  title="Eliminar registro" />
+    </span> 
+ 
+    </div>
+    
+    
+    <!-- Aqui se van a ver los cargos disponibles-->

@@ -1,0 +1,296 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+   $("#busq_distribuidor").click(function(e) {
+        buscar_distribuidor();
+    });
+	
+	function buscar_distribuidor()
+	{
+		if($("#noDistribuidor").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de distribuidor.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var distribuidorx=$("#noDistribuidor").val();
+		var postData = { btnDistribuidor: "Buscar", tipo_busqueda: "1",noDistribuidor:distribuidorx };
+		var formURL= "controladores/distribuidor/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				
+				var obj=JSON.parse(data);
+				if(!isEmptyJSON(obj)){
+				$("#noDistribuidor").val(obj[0].idDistribuidor);
+				$("#nombreDistribuidor").val(obj[0].nombre);
+				$("#direccionDistribuidor").val(obj[0].direccion);
+				$("#telDistribuidor").val(obj[0].telefono);
+				$("#celular").val(obj[0].ceular);
+				$("#empresa").val(obj[0].empresa);
+				$("#estado").val(obj[0].estado);
+				$("#email").val(obj[0].email);
+				}else
+				{
+				$("#dialog").empty();
+				$("#dialog").attr("title","Error");
+				$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>No existe el usuario</p>");
+				$( "#dialog" ).dialog();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+	
+	/*-------------------------------------------------*/
+	
+	$('#elim_cliente').click(function(e){
+		e.preventDefault();
+		eliminar_distribuidor();
+		
+		});
+	
+	function eliminar_distribuidor()
+	{
+		if($("#noDistribuidor").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de distribuidor.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var distribuidorx=$("#noDistribuidor").val();
+		var postData = { btnDistribuidor: "Borrar",noDistribuidor:distribuidorx };
+		var formURL= "controladores/distribuidor/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				$("#dialog").empty();
+				$("#dialog").attr("title","Mensaje de servidor");
+				$("#dialog").html("<p>"+data+"</p>");
+				$( "#dialog" ).dialog();
+				$('#formElem').each (function(){
+			  this.reset();
+			});
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+		
+	/*-------------------------------------------------*/
+			
+	$("#mod_cliente").click(function(e)
+	{
+	$("#btnDistribuidor").val("Modificar");
+	var postData = $("#formElem").serializeArray();
+    var formURL =  $("#formElem").attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			$("#btnDistribuidor").val("Registrar");
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+	
+	/*-------------------------------------------------*/
+	
+			
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = $(this).serializeArray();
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de distribuidores</strong></h2>
+
+ <span class="botoneraSuperior">
+    <button id="mod_cliente" class="modificar" title="Modificar registro"/>
+    <button id="elim_cliente" class="eliminar"  title="Eliminar registro" />
+    </span> 
+<form name="formElem" id="formElem" action="controladores/distribuidor/controller.php" method="post">
+<ul>
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Específicos <span class="requerido">*</span></label>
+ 
+  <div>
+
+     <span class="tercioBoton">
+     
+    <input id="noDistribuidor" type="number" name="noDistribuidor" value="" placeholder="Num/distribuidor" required="required"/>
+      
+    </span>
+    
+    <span class="botonBuscar">
+    <button id="busq_distribuidor" class="buscar"  title="Buscar registro"/>
+    </span>
+ 
+</li>
+
+
+<li class="izquierda">
+  
+  <label class="titulo" for="nombre">Datos generales<span class="requerido">*</span></label>
+  <div>
+    <span class="completo">
+      <input id="nombreDistribuidor" name="nombreDistribuidor" value="" placeholder="Nombre completo" required="required" />
+    </span>
+ 
+    <span class="completo">
+      <input id="direccionDistribuidor" name="direccionDistribuidor" value="" placeholder="Direccción  del distribuidor" required="required"/>
+    </span>
+ 
+    <span class="completo">
+      <input id="telDistribuidor" name="telDistribuidor" value="" placeholder="Telefono de contacto" required="required"/>
+    </span>
+  </div>
+ 
+  <p class="ayuda">Escribir el nombreo completo del distribuidor</p>
+</li>
+ 
+ 
+ 
+  
+<li class="derecha">
+  <label class="titulo" for="direccion">Dirección </label>
+ 
+  <div>
+    <span class="completo">
+      <input id="celular" name="celular" value="" placeholder="Celular" required=""/>
+    </span>
+ 
+     <span class="tercio">
+    <input id="empresa" name="empresa" value="" placeholder="Empresa" required=""/>
+      
+  
+    </span>
+ 
+  </div>
+ 
+  
+</li>
+
+<li class="derecha">
+
+ <label class="titulo" for="estado">Ubicacion<span class="requerido">*</span></label>
+ <div>
+    <span class="completo">
+      <input id="estado" name="estado" value="" placeholder="Estado" required=""/>
+    </span>
+ 
+     <span class="tercio">
+    <input id="email" name="email" value="" placeholder="Email" required=""/>
+      
+  
+    </span>
+ </div>
+
+ 
+  
+</li>
+ 
+ 
+
+
+<li class="botones">
+<input type="hidden" id="btnDistribuidor" name="btnDistribuidor" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar distribuidor &rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

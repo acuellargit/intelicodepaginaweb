@@ -1,0 +1,284 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+    modificar_producto();
+	$("#busq_producto").click(function(e) {
+	
+		e.preventDefault();
+        buscar_producto();
+    });
+	
+	$("#elim_producto").click(function(e) {
+        eliminar_producto();
+    });
+	
+	function buscar_producto()
+	{
+		if($("#noProducto").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de producto.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var productox=$("#noProducto").val();
+		var postData = { btnProducto: "Buscar", tipo_busqueda: "1",noProducto:productox };
+		var formURL= "controladores/producto/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				//alert(data);
+				var obj=JSON.parse(data);
+				
+				if(!isEmptyJSON(obj)){
+				$("#descripcionModulo").val(obj[0].moduloDescripcion);
+				$("#nombre").val(obj[0].moduloNombre);
+				$("#costoModulo").val(obj[0].costo);
+				$("#idProducto").focus();
+				}else
+				{
+				$("#dialog").empty();
+				$("#dialog").attr("title","Error");
+				$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>No existe el producto</p>");
+				$( "#dialog" ).dialog();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+	
+	
+	
+	function eliminar_producto()
+	{
+		if($("#noProducto").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de producto.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var productox=$("#noProducto").val();
+		var postData = { btnProducto: "Borrar",noProducto:productox };
+		var formURL= "controladores/producto/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				$("#dialog").empty();
+				$("#dialog").attr("title","Mensaje de servidor");
+				$("#dialog").html("<p>"+data+"</p>");
+				$( "#dialog" ).dialog();
+				buscar_producto();
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+			
+	function modificar_producto()
+	{
+	$("#mod_producto").click(function(e)
+	{
+	$("#btnAccion").val("Modificar");
+	var postData = $("#formElem").serializeArray();
+    var formURL =  $("#formElem").attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		beforeSend: function(){
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+			},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			$("#btnAccion").val("Registrar");
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    
+
+    });
+	}
+        
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = new FormData($("#formElem")[0]);
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		contentType:false,
+		processData:false,
+		beforeSend: function(){
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+			},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    //e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de productos</strong></h2>
+
+ <span class="botoneraSuperior">
+    <button id="mod_producto" class="modificar" title="Modificar registro"/>
+    <button id="elim_producto" class="eliminar"  title="Eliminar registro" />
+    </span> 
+<form name="formElem" id="formElem" action="controladores/producto/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Específicos <span class="requerido">*</span></label>
+ 
+  <div>
+
+     <span class="tercioBoton">
+     
+    <input id="noProducto" type="number" name="noProducto" value="" placeholder="Num. de producto" required="required"/>
+      
+    </span>
+    
+    <span class="botonBuscar">
+    <button id="busq_producto" class="buscar"  title="Buscar registro"/>
+    </span>
+ 
+  </div>
+ 
+  <p class="ayuda">Es necesario que introduzca el número del producto</p>
+</li>
+
+
+<li class="izquierda">
+  
+  <label class="titulo" for="nombre">Datos generales<span class="requerido">*</span></label>
+  <div>
+    <span class="completo">
+      <input id="nombre" name="nombre" value="" placeholder="Nombre del modulo" required="required" />
+    </span>
+ 
+    <span class="completo">
+      <input id="descripcionModulo" name="descripcionModulo" value="" placeholder="Breve descripción del modulo " required="required"/>
+    </span>
+ 
+    <span class="completo">
+      <input id="costoModulo" name="costoModulo" value="" placeholder="Costo del modulo" required="required"/>
+    </span>
+  </div>
+ 
+  <p class="ayuda">No te olvides de registrar una breve descripción del modulo</p>
+</li>
+ 
+<li class="derecha">
+  <label class="titulo" for="portada">Foto de portada </label>
+ 
+  <div>
+  <span class="completo">
+      <input type="file" id="portada" name="portada" value="" placeholder="Seleccionar archivo" required="" />
+    
+    </span>
+ 
+  </div>
+</li> 
+ 
+  
+<li class="derecha">
+  <label class="titulo" for="contacto">Archivo descargable </label>
+ 
+  <div>
+  <span class="completo">
+      <input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar archivo" required="" />
+    
+    </span>
+ 
+  </div>
+</li>
+
+
+
+ 
+ 
+
+
+<li class="botones">
+<input type="hidden" id="btnAccion" name="btnProducto" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar modulo &rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

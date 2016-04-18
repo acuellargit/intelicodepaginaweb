@@ -1,0 +1,151 @@
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+
+<script>
+$(document).ready(function(e) {
+	
+	$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+	$('#administracion1').click(function(e) {
+			$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Control de Ingresos y Egresos ></h3><span id="administracion1Imagen"><img class="box_imgpeque" src="img/imagenes/Administrativo1.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#administracion1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/Administrativo1.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+	
+	$('#administracion2').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Estados de Cuenta ></h3><span id="administracion2Imagen"><img class="box_imgpeque" src="img/imagenes/Administrativo2.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#administracion2Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/Administrativo2.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+			$('#administracion3').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de gráficas  ></h3><span id="administracion3Imagen"><img class="box_imgpeque" src="img/imagenes/Administrativo3.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#administracion3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/Administrativo3.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		$('#administracion4').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de reportes  ></h3><span id="administracion4Imagen"><img class="box_imgpeque" src="img/imagenes/Administrativo4.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#administracion4Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/Administrativo4.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+	$('#administracion5').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Facturación Electrónica  ></h3><span id="administracion5Imagen"><img class="box_imgpeque" src="img/imagenes/Administrativo5.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#administracion5Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/Administrativo5.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+	
+		
+		
+			 $('#administracion6').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+})
+</script>
+
+
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/administracion.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Control Administrativo ></h3>
+<p>Es la función administrativa que consiste en medir y corregir el desempeño individual y organizacional para asegurar que los hechos empresa.</p>
+
+
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li>Elabora Control de Ingresos y Egresos del Proyecto o Empresa</li>
+    <li>Elabora Graficas del Status del Proyecto o Empresa</li>
+    <li>Elabora Facturas Electrónicas</li>
+    <li>Elabora Control de Flujos de Efectivos y Bancos</li>
+    <li>Elabora Control de Estados Bancarios</li>  
+    <li>Enlace a módulos de Recursos Humanos, Control Administrativo, para Requisición de personal y Administración de Materiales</li>    
+</ol>
+
+
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<br/>
+<ul>
+<li id="administracion1">Control de Ingresos y Egresos</li>
+<li id="administracion2">Estados de Cuenta</li>
+<li id="administracion3">Gráficas</li>
+<li id="administracion4">Reportes</li>
+<li id="administracion5">Facturación Electrónica</li>
+<li id="administracion6">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>
+
+
+

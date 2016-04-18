@@ -1,0 +1,378 @@
+
+<script>
+$(document).ready(function(e) {
+	
+    $('.btn1').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('almacen.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('almacen.html');
+			}
+		});
+		
+		$('.btn2').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('administracion.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('administracion.html');
+			}
+			 
+		});
+		
+			$('.btn3').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('obras.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('obras.html');
+			}
+			 
+		});
+		
+		$('.btn4').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('ventas.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('ventas.html');
+			}
+			 
+		});
+		
+	
+	$('.btn5').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('nomina.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('nomina.html');
+			}
+			 
+		});
+		
+		$('.btn6').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('recHumanos.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('recHumanos.html');
+			}
+			 
+		});
+		
+		$('.btn7').click(function(){
+			$( "#contenido" ).empty();
+			if(!$("#menuTab").length)
+			{
+			
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					$('#menuTab').load('sincronizador.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('sincronizador.html');
+			}
+			 
+		});
+	
+		
+		//Empresa
+		
+		    $('.btn8').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('inteli.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('inteli.html');
+			}
+		});
+		
+		   $('.btn9').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('cliente.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('cliente.html');
+			}
+		});
+
+
+   $('.btn10').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('noticia.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('noticia.html');
+			}
+		});
+
+   $('.btn11').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('articulo.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('articulo.html');
+			}
+		});
+
+   $('.btn12').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					
+					$('#menuTab').html('<iframe seamless="seamless" width="800px" height="800px" frameborder=0 scrolling="no"  src="localizar.html"></iframe>');
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('localizar.html');
+			}
+		});
+
+   $('.btn13').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('galeria.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('galeria.html');
+			}
+		});
+
+		   $('.btn14').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					$('#menuTab').load('publicidad.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('publicidad.html');
+			}
+		});
+		
+		/*Soporte*/
+		 $('.btn15').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$('#contenido').load('soporte.html');
+				
+			}
+		});
+		
+		
+		/*Decargar productos*/
+		 $('.btnDescargas').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$('#contenido').load('descargas.html');
+				
+			}
+		});
+		
+		/*Servicios*/
+		  $('.btn16').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('implementacion.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+			}
+		});
+		
+		  $('.btn17').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('capacitacion.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('capacitacion.html');
+			}
+		});
+		
+		
+		  $('.btn18').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('consultoria.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('consultoria.html');
+			}
+		});
+		
+  $('.btn19').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('sTelefonico.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('sTelefonico.html');
+			}
+		});
+		
+		  $('.btn20').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('sSitio.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('sSitio.html');
+			}
+		});
+		
+		  $('.btn21').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					$('#menuTab').load('poliza.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('poliza.html');
+			}
+		});
+		
+});
+		 
+</script>
+<ul>
+<li class='has-sub'><a href='#'><span><strong>Empresa</strong></span></a>
+      <ul>
+         <li><a href='#' class="btn8"><span>Nosotros</span></a></li>
+         <li><a href='#' class="btn9"><span>Clientes</span></a></li>
+         <li><a href='#' class="btn10"><span>Noticias</span></a></li>
+         <li><a href='#' class="btn12"><span>Distribuidores</span></a></li>
+         <li><a href='#' class="btn13"><span>Galería</span></a></li>
+         <li class='last'><a href='#' class="btn14"><span>Presentacion Flash</span></a></li>
+      </ul>
+   </li>
+
+    <li class='has-sub'><a href='#'><span><strong>Modulos</strong></span></a>
+       <ul>
+         <li><a href='#' class="btn1"><span>Almacen</span></a></li>
+         <li><a href='#' class="btn2"><span>Control Administrativo</span></a></li>
+         <li><a href='#' class="btn3"><span>Control de Obras</span></a></li>
+         <li><a href='#' class="btn4"><span>Control de Ventas</span></a></li>
+         <li><a href='#' class="btn5"><span>Nóminas</span></a></li>
+         <li><a href='#' class="btn6"><span>Recursos Humanos</span></a></li>
+         <li class='last' ><a href='#' class="btn7"><span>Reportes y sincronizador</span></a></li>
+         </ul>
+   </li>
+   
+   
+   <li class='has-sub'><a href='#'><span><strong>Descargas</strong></span></a>
+      <ul>
+         <li><a href='#' class="btn15"><span>Actualizaciones</span></a></li>
+      
+         <li class='last'><a href='#' class="btnDescargas"><span>Productos</span></a></li>
+      </ul>
+   </li>
+	<li class='has-sub'><a href='#'><span><strong>Servicios</strong></span></a>
+      <ul>
+         <li><a href='#' class="btn16"><span>Interconectividad de modulos</span></a></li>
+         <li><a href='#' class="btn17"><span>Capacitación</span></a></li>
+         <li><a href='#' class="btn18"><span>Consultoría</span></a></li>
+         <li><a href='#' class="btn19"><span>Soporte Telefónico</span></a></li>
+         <li><a href='#' class="btn20"><span>Desarrollo de sistemas</span></a></li>
+         
+      </ul>
+   </li>
+   
+   
+
+</ul>
+
+
+

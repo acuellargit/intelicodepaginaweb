@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Intelcode ERP desarollo de software empresaria" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" >
+<meta name="keywords" content="Software,Proyectos,ERP,Soluciones de software,Software ERP" />
+<meta name="author" content="NathLab" />
+<title>Inteli-code</title>
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/themes/blitzer/jquery-ui.css">
+<link rel="stylesheet" href="css/menu.css">
+ <link type="image/x-icon" href="img/favicon.ico" rel="icon" />
+ <link type="image/x-icon" href="img/favicon.ico" rel="shortcut icon" />
+
+
+<script type="text/javascript" src="js/modernizr.custom.28468.js"> </script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery.colorbox.js"></script>
+ 
+
+<script>
+$(document).ready(function(e) {
+		
+		var ocupado=false;
+		buscar_slider();
+		
+		$(".pdfBarra").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/PDF/Portafolio_es.pdf',open:true,iframe:true,width:"70%", innerHeight:'80%',close:'Cerrar Ventana'});
+                });
+		
+		$("#buscador").submit(function(e) {
+            
+			
+			$( "#contenido" ).empty();
+			var busqueda=$("#txtbusqueda").val();
+			
+			$(document).prop("location","?busq="+busqueda);
+			$('#contenido').load('cotizador.php');
+			e.preventDefault();
+        });
+		
+		function llamar_slider()
+		{
+			var images = [];
+			$('#centro img').each(function(){
+				images.push($(this));    
+			});
+			var imgcount = images.length;
+			$("#centro img").hide();
+			$("#centro img").first().show();
+			var currentItem = 0;
+			
+			$('#derecha').click(function(){
+					$("#centro img").hide();
+					currentItem++;
+					images[currentItem%4].fadeIn(1000);        
+			});
+			
+			$('#izquierda').click(function(){
+					$("#centro img").hide();
+				   currentItem--;
+				   if(currentItem < 0)
+					   currentItem = imgcount-1;
+				   images[currentItem%4].fadeIn(1000);
+			});
+		}
+		
+		
+		function buscar_slider()
+		{
+		var postData = { btnPublicidad: "Buscar", tipo_busqueda: "1" };
+		var formURL= "controladores/publicidad/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+				$("#centro").html("<img src='images/loading.gif'  />");
+				
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				
+				$("#centro").html(data);
+				llamar_slider();
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+	
+			}
+			
+		/*$(document).attr("location","#presentacion");*/
+		$('.verMenu').load('menu.html');
+		$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+		$("#inicio").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+		  $('.localizar').click(function(){
+			  
+			//$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					
+					$('#menuTab').html('<iframe seamless="seamless" width="800px" height="800px" frameborder=0 scrolling="no"  src="localizar.html"></iframe>');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('localizar.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		
+	
+		 $('#distribuidor').click(function(){
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "empresa.html",function( response, status, xhr ) {
+					
+					$('#menuTab').html('<iframe seamless="seamless" width="800px" height="800px" frameborder=0 scrolling="no"  src="localizar.html"></iframe>');
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('localizar.html');
+			}
+		});
+		
+		
+		$('.login').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('chat/login.php');
+		});
+		
+		$('.contacto').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('contacto.html');
+		});
+		
+		$('.chat').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('chat');
+		});
+		
+		$('.trabajos').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('bolsaTrabajo.html');
+		});
+		
+		$('#factura').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('Facturas.html');
+		});
+		
+			$('#reportesVarios').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('reportesVarios.html');
+		});
+		
+		$('#publicidad').click(function(){
+			$( "#contenido" ).empty();
+			$('#contenido').load('Promociones.html');
+		});
+		
+			$('.cotizar').click(function(){
+			$( "#contenido" ).empty();
+		
+			$('#contenido').load('cotizador.php');
+		});
+		
+		
+}); 
+	
+		
+		
+</script>
+
+</head>
+
+<body >
+<section id="contenedor">
+<header id="headerGeneral"> 
+  <aside class="menuSuperior">
+     <ul>
+     <li class="login">Mi Cuenta</li>
+     <li class="contacto">| Contacto</li>
+     <li class="chat">| Chat en linea</li>
+     
+     </ul>
+     </aside>
+
+
+<!--Logo-->
+<div id="inicio">
+<img src="img/logo2.png" width="125" height="55"/>
+     <div class="bubble"><span><strong><a  href="#">Aquí construimos tus ideas</a></strong></span></div>
+     </div>
+     <!--Termina Logo-->
+     
+   
+     
+     <!-- Buscador Google --> 
+    
+<FORM id="buscador" method=GET action="http://www.google.com/search">
+ 
+<input type="hidden" name="ie" value="UTF-8"> 
+<input type="hidden" name="oe" value="UTF-8"> 
+<INPUT  class="buscar" id="txtbusqueda" type="text" name="q"  size="28" maxlength="255" value=""> 
+<INPUT class="ir" type="submit" name="btnG" VALUE="Ir"> 
+<font size=-1> 
+<input type="hidden" name="domains" value="URL"><br><input type="radio" name="sitesearch" value=""> Buscar Todo<input type="radio" name="misearch" value="URL" checked>Buscador en mi web<br> 
+</font> 
+</FORM> 
+<!--Finaliza Buscador  -->
+
+<!-- contacto-->
+<aside>
+Llama al +52 (938) 131 08 27<br/>
+info@inteli-code.com.mx
+</aside>
+
+      <nav class="verMenu"  id='cssmenu'>
+      </nav>
+</header>
+
+<article id="contenido">
+
+   <article id="anuncio">
+   
+   <div id="centro"></div>
+
+<aside id="izquierda"><img src="img/SlideArrowLeftOver.png"/></aside>
+<aside id="derecha"><img src="img/SlideArrowRight.png"/></aside>
+
+ <article class="central">
+<img src="img/comprar.png" class="cotizar"/>
+   </article>
+ 
+  
+   </article>
+    
+   <article class="centraldown">
+   <a href="/web_mail">
+    <span class="emailBtn"> <img src="img/boton_mail.png" height="100" width="150"/></span>
+    </a>
+    <a href="http://inteligentweb.atechnology.mx/intelcode.php">
+    <span class="emailBtn"><img src="img/Application-icon.png"  height="100" width="150"/></a>
+    
+    <img class="pdfBarra" src="img/app.png" width="180" height="50"/>
+    <img class="pdfBarra" src="img/googleplay.png" width="180" height="50"/>
+    </div>
+   
+    
+    <span class="txtInferior">Corrreo empresarial</span>
+    
+    <span class="txtInferiorApp">Aplicación Web</span>
+   </article>
+   
+   
+      
+<article id="soluciones">
+
+ <ul>
+   <li class='has-sub'>
+   <img src="images/ofertas.jpg" />
+    <span  id="tituloPromociones"><p align="justify">Aquí encontrarás ofertas, descuentos, paquetes y mucho más que Intelicode te ofrece para que obtengas los mejores beneficios. <strong id="publicidad" style="color:#F60; cursor:pointer;"> Ver promociones</strong></p></span>
+  
+   </li>
+   
+   <li class='has-sub'>
+   <img src="images/reportes.jpg" />
+   <span  id="tituloReportes"><p align="justify">Comprendemos la necesidad de contar con información detallada de su empresa, por lo que nuestro ERP cuenta con diversos reportes informativos. <strong id="reportesVarios" style="color:#F60;cursor:pointer;"> Ver reportes</strong></p></span>
+  
+   </li>
+   <li  class='has-sub'>
+   <img src="images/factura.jpg" />
+     <span  id="tituloPromociones"> <p align="justify">Para personas físicas y morales que no cuentan con algún sistema administrativo y que necesitan facturacion electronica esta es la solución. <strong id="factura" style="color:#F60;cursor:pointer;"> Ver módulo</strong></p></span>
+  
+   </li>
+   
+      <li  class='has-sub'>
+      <img src="images/web.jpg" />
+         <span  id="tituloDistribuidor"><p align="justify">Estamos en toda la República Mexicana para poner todos nuestros  servicios a tu alcance. Ubica aquí tu distribuidor más cercano.<strong id="distribuidor" style="color:#F60;cursor:pointer;"> Ver distribuidores</strong></p></span>
+   </li>
+</ul>
+
+    
+    </article>
+    <article id="anexo">   
+   
+   <section >
+   
+   <aside class="infoContacto">
+   <ul>
+   
+   <li>
+   
+   <span class="telefono">
+   <img src="img/contacto.png"/>
+   <p> <strong>¿Quieres llamar? </strong>
+    <br/>
+    Llame usted al <br/>+52 (938) 131 08 27
+    </p>
+   </span>
+   </li>
+   <li>
+   <span class="correo">
+    <img src="img/email.png"/>
+    <p> <strong>Si no tiene una cuenta aún</strong>
+    <br/>
+    Pongase en contacto a <br/>info@inteli-code.com.mx
+    </p>
+   </span>
+   </li>
+   </ul>
+   </aside>
+   
+      <aside class="bolsaTrabajo">
+   <p><strong>   Oportunidad. </strong>Te estamos buscando</p>
+   <p>Necesitamos personas como usted para unirse a nuestro grupo de trabajo.<strong> ¿Quieres un trabajo? <br/><span class="trabajos" style="color:#F60;cursor:pointer;">Entra aquí</span> </strong></p>
+   
+   </aside>
+
+   
+   <aside class="redesSociales">
+   <p><strong>¿Quieres conocer más de Inteli-Code?</strong> Siguenos en:</p>
+   
+   <div class="Soldier-Social">
+    
+    <a href="https://www.facebook.com/inteli.code.9?fref=ts" target="_blank"><img class="Facebook-Social" src="img/Facebook.png" width="48" 		height="48"></a><a href="https://twitter.com/Inteli_Code" target="_blank"><img class="Twitter-Social" src="img/Twitter.png" width="48" height="48"></a><a href="https://plus.google.com/" target="_blank"><img class="GooglePlus-Social" src="img/Google-plus.png" width="48" height="48"></a><a href="https://www.youtube.com/user/Inteligentmx" target="_blank"><img class="YouTube-Social" src="img/Youtube.png" width="48" height="48"></a> </div>
+    
+   
+   </aside>
+
+
+   </section>
+
+</article>
+
+   
+
+
+</article> <!--fin contenido cuerpo-->
+
+
+<footer id="footer">
+    <span><h4>Acerca de Inteli-Code</h4></span>
+ <aside class="verMenu"> </aside>
+</footer>
+
+</section>
+<div id="wait"></div>
+</body>
+</html>

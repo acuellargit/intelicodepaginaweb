@@ -1,0 +1,146 @@
+
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+<script>
+$(document).ready(function(e) {
+		$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+		$('#ventas1').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Control y Seguimientos de Vendedores ></h3><span id="ventas1Imagen"><img class="box_imgpeque" src="img/imagenes/ventas1.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#ventas1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/ventas1.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+	
+		$('#ventas2').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla  de Reportes de Efectividad ></h3><span id="ventas2Imagen"><img class="box_imgpeque" src="img/imagenes/ventas3.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#ventas2Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/ventas3.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+	
+		
+			$('#ventas3').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla  de Cotizaciones ></h3><span id="ventas3Imagen"><img class="box_imgpeque" src="img/imagenes/ventas2.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#ventas3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/ventas2.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		$('#ventas4').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla  de  Gráficas  ></h3><span id="ventas4Imagen"><img class="box_imgpeque" src="img/imagenes/ventas4.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#ventas4Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/ventas4.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+		$('#ventas5').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Bitácora de Ventas ></h3><span id="ventas5Imagen"><img src="img/imagenes/ventas5.png" width="466" height="368"/></span>');
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+		$('#ventas6').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Líneas de Tiempos ></h3><span id="ventas6Imagen"><img src="img/imagenes/ventas6.png" width="466" height="368"/></span>');
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+		 $('#ventas7').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+})
+</script>
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/ventas.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Control de Ventas ></h3>
+<p>La venta es una de las actividades más pretendidas por empresas, organizaciones o personas que ofrecen algo (productos, servicios u otros) en su mercado meta, debido a que su éxito depende directamente de la cantidad de veces que realicen ésta actividad, de lo bien que lo hagan y de cuán rentable les resulte hacerlo.</p>
+
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li>Elabora Cotizaciones de Ventas</li>
+    <li>Elabora Control de Clientes</li>
+    <li>Elabora Seguimiento de Clientes</li>
+    <li>Elabora Bitácora de Actividades de Clientes</li>
+    <li>Elabora Graficas de Productividad de Vendedores</li>
+<li>Elabora Facturas en Base a Cotizaciones y Reportes Gerenciales</li>          
+    <li>Enlace a módulos de Almacenes, Control Administrativo, para Cotización y Administración de Ingresos </li>   
+</ol>
+
+
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<br/>
+<ul>
+<li id="ventas1">Control y Seguimientos de Vendedores</li>
+<li id="ventas2">Reportes de Efectividad</li>
+<li id="ventas3">Cotizaciones</li>
+<li id="ventas4">Linea de tiempo</li>
+<li id="ventas7">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>
+
+
+

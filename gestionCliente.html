@@ -1,0 +1,289 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+    
+	$("#busq_cliente").click(function(e) {
+        buscar_cliente();
+    });
+	
+	function buscar_cliente()
+	{
+		if($("#noCliente").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de cliente.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var clientex=$("#noCliente").val();
+		var postData = { btnCliente: "Buscar", tipo_busqueda: "1",noCliente:clientex };
+		var formURL= "controladores/cliente/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				
+				var obj=JSON.parse(data);
+				if(!isEmptyJSON(obj)){
+				$("#noCliente").val(obj[0].idcliente);
+				$("#pass").val(obj[0].pass);
+				//$("#nombre").val(obj[0].nombre);
+				var res = obj[0].nombre.split(" ");
+				$("#nombre").val(res[0]);
+				$("#apellido1").val(res[1]);
+				$("#apellido2").val(res[2]);
+				$("#empresa").val(obj[0].empresa);
+				$("#contacto").val(obj[0].contacto);
+				$("#email").val(obj[0].email);
+				$("#noCliente").focus();
+				}else
+				{
+				$("#dialog").empty();
+				$("#dialog").attr("title","Error");
+				$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>No existe el usuario</p>");
+				$( "#dialog" ).dialog();
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+	
+	$('#elim_cliente').click(function(e){
+		e.preventDefault();
+		eliminar_cliente();
+		
+		});
+	
+	function eliminar_cliente()
+	{
+		if($("#noCliente").val().length<1)
+		{
+			$("#dialog").attr("title","Error campos vacios");
+			$("#dialog").html("<p><span class='ui-icon ui-icon-alert' style='float:left; margin:0 10px 20px 0;'></span>Error es necesario el no. de cliente.</p>");
+			$( "#dialog" ).dialog();
+			return;
+		}
+		
+		var clientex=$("#noCliente").val();
+		var postData = { btnCliente: "Borrar",noCliente:clientex };
+		var formURL= "controladores/cliente/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,beforeSend: function()
+			{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");	
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				/**/
+				$("#wait").empty();
+				$("#dialog").empty();
+				$("#dialog").attr("title","Mensaje de servidor");
+				$("#dialog").html("<p>"+data+"</p>");
+				$( "#dialog" ).dialog();
+				$('#formElem').each (function(){
+			  this.reset();
+			});
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+	});	
+	}
+			
+	$("#mod_cliente").click(function(e)
+	{
+	$("#btnCliente").val("Modificar");
+	var postData = $("#formElem").serializeArray();
+    var formURL =  $("#formElem").attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			$("#btnCliente").val("Registrar");
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+	
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = $(this).serializeArray();
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,beforeSend: function()
+		{
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+		},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de clientes</strong></h2>
+
+ <span class="botoneraSuperior">
+    <button id="mod_cliente" class="modificar" title="Modificar registro"/>
+    <button id="elim_cliente" class="eliminar"  title="Eliminar registro" />
+    </span> 
+<form name="formElem" id="formElem" action="controladores/cliente/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Específicos <span class="requerido">*</span></label>
+ 
+  <div>
+
+     <span class="tercioBoton">
+     
+    <input id="noCliente" type="number" name="noCliente" value="" placeholder="Num. de cliente" required="required"/>
+      
+    </span>
+    
+    <span class="botonBuscar">
+    <button id="busq_cliente" class="buscar"  title="Buscar registro"/>
+    </span>
+ 
+    <span class="dostercios">
+    
+    
+      <input type="password" id="pass" name="pass" value="" placeholder="Contraseña" required="required"/>
+        </span>
+  </div>
+ 
+  <p class="ayuda">Número de cliente y contraseña es la misma</p>
+</li>
+
+
+<li class="izquierda">
+  
+  <label class="titulo" for="nombre">Nombre y apellidos <span class="requerido">*</span></label>
+  <div>
+    <span class="completo">
+      <input id="nombre" name="nombre" value="" placeholder="Nombre" required="required" />
+    </span>
+ 
+    <span class="completo">
+      <input id="apellido1" name="apellido1" value="" placeholder="Primer apellido" required="required"/>
+    </span>
+ 
+    <span class="completo">
+      <input id="apellido2" name="apellido2" value="" placeholder="Segundo apellido" required="required"/>
+    </span>
+  </div>
+ 
+  <p class="ayuda">No te olvides de escribir también el segundo apellido</p>
+</li>
+ 
+ 
+ 
+  
+<li class="derecha">
+  <label class="titulo" for="contacto">Contacto </label>
+ 
+  <div>
+    <span class="completo">
+      <input id="empresa" name="empresa" value="" placeholder="Empresa " required=""/>
+    </span>
+ 
+     <span class="tercio">
+    <input id="contacto" name="contacto" value="" placeholder="Contacto" required=""/>
+      
+  
+    </span>
+ 
+    <span class="dostercios">
+    
+    
+      <input id="email" name="email" value="" placeholder="Email " required=""/>
+        </span>
+  </div>
+ 
+  <p class="ayuda">Datos de la empresa en la que labora el cliente</p>
+</li>
+ 
+ 
+
+
+<li class="botones">
+<input type="hidden" name="btnCliente" id="btnCliente" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar cliente &rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

@@ -1,0 +1,414 @@
+aux .izquierda {
+  float: left;
+  clear: left;
+}
+ 
+aux .derecha {
+  float: right;
+  clear: right;
+}
+ 
+ #aux ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+#aux{
+  background: #FFF;
+  border: 1px solid silver;
+  margin: 1em auto;
+  padding: 1em;
+  width: 768px;
+}
+ 
+span.requerido {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #C00;
+}
+ 
+h2 {
+  font: normal 1em arial, sans-serif;
+  margin: 0;
+}
+ 
+#aux ul li.botones {
+  border-top: 2px solid #CCC;
+  clear: both;
+  float: none;
+  padding: 1em 0;
+  margin-top: 1em;
+  text-align: right;
+  width: 100%;
+}
+
+
+ul li.botones input {
+  font-size: 1em;
+}
+ 
+aux ul li {
+  margin: 0.5em 0;
+  padding: 0.5em;
+  width: 46%;
+}
+
+ 
+ul li label.titulo {
+  font-weight: bold;
+}
+ 
+#aux ul li div span {
+  float: left;
+  padding: 0.3em 0;
+}
+ 
+ul li div span.completo {
+  width: 100%;
+}
+ 
+ul li div span.mitad {
+  width: 50%;
+}
+ 
+ul li div span.tercio {
+  width: 33%;
+}
+
+ul li div span.botonBuscar
+{
+	witdh:5%;
+	margin-right:10px;
+	margin-left:10px;
+	margin-top:-10px;
+}
+
+ul li div span.tercioBoton {
+  width: 22%;
+} 
+
+ul li div span.dostercios {
+  width: 66%;
+}
+ 
+ul li div span label {
+  display: block;
+  font: normal 0.8em arial, sans-serif;
+  color: #333;
+}
+ 
+span.botoneraSuperior
+{
+	width:10%;
+	float:right;
+	margin-top:-30px;;
+}
+ 
+ul li p.ayuda {
+  display: none;
+}
+ 
+ul li input {
+  padding: 0.2em;
+}
+
+
+input#apellido1, input#apellido2, input#empresa, input#tituloNota , input#descripcionModulo, input#direccion{
+  width: 260px;
+}
+
+
+
+select#vacanteLista,select#listaSector
+{
+	width:260px;
+	margin-left:-400px;
+	margin-right:170px;
+}
+
+#moduloDescripcion
+{
+	position:absolute;
+	left:18px;
+	width:260px;
+}
+
+
+input#noCliente,input#noProducto,input#usuario,input#noDistribuidor
+{
+	width:120px;
+}
+.buscar
+{
+	background-image:url(../img/buscar.png);
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+	width:30px;
+	height:27px;
+	margin-top:9px;
+}
+
+.modificar
+{
+	background-image:url(../img/modificar.png);
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+	width:30px;
+	height:27px;
+}
+
+.eliminar
+{
+	background-image:url(../img/eliminar.png);
+	-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+	width:30px;
+	height:27px;
+}
+
+.btnBuscar
+{
+	position:absolute;
+	margin-left:-160px;
+	width:150px;
+	height:27px;
+
+}
+
+
+textarea
+{
+	width:500px;
+	height:200px;
+}
+ 
+ /*
+input#codigopostal {
+  width: 80px;
+}
+ 
+select#provincia {
+  width: 90px;
+}
+ 
+select#pais {
+  width: 150px;
+}
+ 
+input#telefonofijo, input#telefonomovil {
+  width: 135px;
+}
+ 
+/* Cambiar el color en el :hover y resaltar los campos en el :focus */
+#aux ul li:hover {
+  background-color: #FF9;
+}
+ 
+ul li.botones:hover {
+  background-color: transparent;
+}
+ 
+ul li input:focus {
+  border: 2px solid #E6B700;
+}
+ 
+/* Formatear el formulario a una columna */
+ul li.izquierda, ul li.derecha {
+  float: none;
+  width: auto;
+}
+
+
+#aux ul li {
+  overflow: hidden;
+}
+ 
+ul li label.titulo {
+  float: left;
+  width: 150px;
+}
+ 
+#aux ul li div {
+  margin-left: 160px;
+}
+ 
+/* Aspecto final del formulario con los mensajes de ayuda */
+h2 {
+  margin-bottom: 0.3em;
+  width:80%;
+}
+ 
+#aux ul li {
+  border-top: 1px solid #CCC;
+  margin: 0;
+  padding: 1em;
+}
+ 
+ul li.botones {
+  margin: 0;
+}
+ 
+ul li label.titulo {
+  text-align: right;
+  width: 100px;
+}
+ 
+ul li div {
+  margin-left: 110px;
+  overflow: hidden;
+}
+ 
+#aux ul li {
+  position: relative;
+}
+ 
+ul li:hover p.ayuda {
+  display: block;
+  margin: 0.3em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+}
+
+
+.verVacante
+{
+	position:absolute;
+	margin-top:-1px;
+	margin-left:-130px;
+padding: .4em 0;
+}
+
+/*Mostrar galeria*/
+.ver{ margin-left:62px;}
+ul.gallery { overflow:hidden; zoom:1; width:900px; list-style:none;}
+ul.gallery li { width:170px; height:170px; float:left; padding:5px; margin:10px; border:none; background-color:#666;}
+ul.gallery li img { display:block; width:170px; height:170px; opacity:.7;}
+ul.gallery li img:hover { opacity:1;}
+ul.gallery li:nth-child(4n) { width:170px; }
+span.validar{  float:right; margin-top:-17px; z-index:100;position:relative; opacity:1;}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  -webkit-transition: all 0.15s ease-out 0;
+  -moz-transition: all 0.15s ease-out 0;
+  transition: all 0.15s ease-out 0;
+   background:#09C;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  margin-right: 0.5rem;
+  z-index: 1000;
+}
+
+.option-input:hover { background: #9faab7; border:none;}
+
+.option-input:checked { background:#069; border:none;}
+
+.option-input:checked::before {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  content: '\2716';
+  display: inline-block;
+  font-size: 26.66667px;
+  text-align:left;
+  line-height: 20px;
+  border:none;
+}
+
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: #40e0d0;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+    border:none;
+}
+
+
+@-webkit-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+
+@-moz-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+
+@-o-keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}
+
+@keyframes 
+click-wave { 0% {
+ width: 40px;
+ height: 40px;
+ opacity: 0.35;
+ position: relative;
+}
+ 100% {
+ width: 200px;
+ height: 200px;
+ margin-left: -80px;
+ margin-top: -80px;
+ opacity: 0.0;
+}
+}

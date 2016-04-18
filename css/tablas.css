@@ -1,0 +1,129 @@
+CSS
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+table, table td, table tr {
+padding:0px;
+border-spacing: 0px;
+}
+ 
+table {
+border:1px black solid;
+border-radius:5px;
+min-width:400px;
+font-family: Helvetica,Arial;
+}
+ 
+table td {
+padding:6px;
+}
+ 
+table tr:first-child td:first-child {
+border-radius:5px 0px 0px 0px;
+}
+ 
+table tr:first-child td:last-child {
+border-radius:0px 5px 0px 0px;
+}
+ 
+table tr:last-child td:first-child {
+border-radius:0px 0px 0px 5px;
+}
+ 
+table tr:last-child td:last-child {
+border-radius:0px 0px 5px 0px;
+}
+ 
+table td:not(:last-child) {
+border-right:1px #666 solid;
+}
+ 
+ 
+table tr:nth-child(2n) {
+background: #87CEEB;
+}
+ 
+table tr:nth-child(2n+1){
+background: #ADD8E6;
+}
+ 
+table.header tr:not(:first-child):hover, table:not(.header) tr:hover {
+background:#E0FFFF;
+}
+ 
+table:not(.header) tr {
+text-align: left;
+}
+ 
+table.header tr:first-child {
+font-weight: bold;
+color:#fff;
+background-color: #444;
+border-bottom:1px #000 solid;
+}
+ 
+table.header tr:nth-child(n+2) {
+text-align: right;
+}
+- See more at: http://www.enricflorit.com/aprovecha-los-nuevos-estilos-css3-en-tus-tablas/#sthash.OpY9PB6D.dpuf

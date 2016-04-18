@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Descargas de Software Intelicode ERP</title>
+<link rel="stylesheet" href="css/cargar.css" />
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+<link rel="stylesheet" type="text/css" href="css/formulario2.css" />
+<script>
+		$(document).ready(function(e) {
+          
+		
+		$("#btnDescargas").click(function(e) {
+        //alert("sigue descargas");
+            autorizar();    
+        });
+		function autorizar()
+		{
+		var usuario=$("#txtId").val();
+		var p=$("#txtPass").val();
+		var postData={ btnVenta:"Login",username:usuario,pass:p };
+		//alert("sigue mas");
+		//var postData = $(this).serializeArray();
+    	var formURL = "controladores/clienteventa/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{
+			
+			
+			if(data!="error" || data!=""){
+			
+			var obj = JSON.parse(data);
+			//alert(obj);
+			if(obj.login)
+			{
+				buscar_producto(usuario);
+				
+			}else
+			{
+				alert("error de usuario o contraseña");
+			}
+				
+			}
+			
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				//if fails      
+			}
+		});    
+		}
+		function buscar_producto(idx)
+		{
+		var postData = { btnProducto: "Buscar", tipo_busqueda: "6",id:idx };
+		var formURL= "controladores/producto/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function()
+			{
+			var rst='<div class="bubblingG">'+
+				'<span id="bubblingG_1">'+
+				'</span>'+
+				'<span id="bubblingG_2">'+
+				'</span>'+
+				'<span id="bubblingG_3">'+
+				'</span></div>';
+				$("#cbp-wm").html(rst);
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$("#cbp-wm").empty();
+				$("#cbp-wm").html(data);
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+		
+		        });
+</script>
+</head>
+
+<body>
+
+<div id="completoSoporte">
+
+
+<div id="menuTab">
+<fieldset>
+<h3 style="color:#F60; margin-left:140px;">Sistema de descargas. </h3>
+<p>Favor de llenar los campos con la informacion correspondiente</p>
+<p>Se les recuerda que las claves como los usuarios son personales e intransferibles.</p>
+</fieldset>
+
+<form id="frmAutorizar" class="contact_form" name="frmAutorizar" action="controladores/clienteventa/controller.php" method="post">
+<ul>
+	<li>
+    <label>Usuario:</label>
+    </li>
+    <li>
+    <input id="txtId" name="id" type="text" required="required"/>
+   </li>
+   <li>
+    <label>Contraseña:</label>
+    </li>
+    <li>
+    <input id="txtPass" name="pass" type="text" required="required" />
+    </li>
+   <li>
+    <button id="btnDescargas" class="submit" type="button" name="btnLiberar">Descargar</button>
+    </li>
+    </ul>
+    
+</form>
+
+<div id="cbp-wm" class="cbp-vm-switcher cbp-vm-view-grid">
+
+<!--<ul>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+</ul>-->
+
+</div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>

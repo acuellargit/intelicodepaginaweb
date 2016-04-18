@@ -1,0 +1,153 @@
+<style>
+
+
+#main-img
+{
+    background-color: #F2F2F2;
+    padding: 10px;
+    height: 300px;
+    box-shadow: 0px 25px 19px -18px #545454; 
+	width:620px;  
+}
+
+#imageContainer
+{
+    width: 650px;
+    margin: 30px auto 100px auto;
+    position: relative;
+}
+ 
+#imageContainer:before
+{
+    content: '';
+    width: 30px;
+    box-shadow: 20px 0 20px -10px #000000;
+    position: absolute;
+    top: -10px;
+    left: -30px;
+    bottom: -10px;
+    z-index: 2;
+}
+ 
+#imageContainer:after
+{
+    content: '';
+    width: 30px;
+    box-shadow: -20px 0 20px -10px #000000;
+    position: absolute;
+    top: -10px;
+    right: -30px;
+    bottom: -10px;
+    z-index: 2;
+}
+
+#imageBox
+{
+    padding: 10px;
+    background-color: rgba(0,0,0,0.2);
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+ 
+#imageBox li
+{
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+#imageBox img
+{
+    width: 120px;
+    cursor: pointer;
+    border: 4px solid #FFFFFF;
+}
+
+#imageContainer ::-webkit-scrollbar
+{
+    height: 8px;
+    background-color: rgba(100,0,0,0.3);
+    border-radius: 5px;
+}
+#imageContainer ::-webkit-scrollbar-thumb
+{
+    background: #fff;
+}
+#imageContainer ::-webkit-scrollbar-thumb:window-inactive
+{
+    background: #aaa;
+}
+</style>
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<!--<script type="text/javascript" src="js/scriptGaleria.js"></script>-->
+
+<script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+
+
+
+<script>
+	$(document).ready(function(e) {
+        buscar_galeria();
+		function buscar_galeria()
+		{
+		var postData = { btnGaleria: "Buscar", tipo_busqueda: "1" };
+		var formURL= "controladores/galeria/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$("#imageContainer").html(data);
+				var first_img = $('#imageContainer li:first img')
+					
+				var imageContainer = $("#imageContainer");
+				$("#main-img").attr("src", $(first_img).attr("src"));
+			   
+			 
+				$("#imageBox img").click(function () {
+					$("#main-img").attr("src", $(this).attr("src"));
+					$("#main-img").fadeOut(0);
+					$("#main-img").fadeIn(1000);     
+				});
+			 
+				imageContainer.find('ul').on('mousewheel', function (e, delta) {
+					this.scrollLeft -= (delta * 50);
+					e.preventDefault();
+				});				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+		
+    });
+</script>
+
+
+<div id="solucionPaginas">
+<article id="principal">
+<h3 style="color:#F60; margin-left:140px;">Galería de reportes ></h3>
+
+
+<section id="descripcionmodulo">
+<div>   
+      <img id="main-img" src="#" />
+      <div id="imageContainer">
+        
+       
+        
+    </div>
+</div>
+
+</section>
+</article>
+
+</div>

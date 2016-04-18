@@ -1,0 +1,198 @@
+
+<script>
+
+	$(document).ready(function(e) {
+        
+    buscar_publicidad();
+	$("#btnBuscar").click(function(e) {
+        buscar_publicidad();
+    });
+	
+		$("#elim_Publicidad").click(function(e) {
+			e.preventDefault();
+            borrar_archivos();
+        });
+		function borrar_archivos()
+		{
+			//alert("iniciado borrar");
+			$("input:checkbox:checked").each(function(){
+		//cada elemento seleccionado
+			borrar_archivo($(this).attr("title"));
+			//buscar_galeria();
+			});
+			//buscar_galeria();
+		}
+		
+		function borrar_archivo(idx)
+		{
+			var postData = { btnPublicidad: "Eliminar", id: idx };
+			var formURL= "controladores/publicidad/controller.php";
+			$.ajax(
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				success:function(data, textStatus, jqXHR) 
+				{	
+					$("#dialog").empty();
+					$("#dialog").html("<p>"+data+"</p>");
+					$( "#dialog" ).dialog();
+					buscar_publicidad();
+					
+				},
+				error: function(jqXHR, textStatus, errorThrown) 
+				{
+					alert("error al cargar los datos");
+					//if fails      
+				}
+			});	
+		}
+		
+		function buscar_publicidad()
+		{
+			var cualx=$("#listaSector").val();
+		var postData = { btnPublicidad: "Buscar", tipo_busqueda: "2",cual:cualx};
+		var formURL= "controladores/publicidad/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$(".ver").html(data);
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+		
+		
+    });
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = new FormData($("#formElem")[0]);
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		contentType:false,
+		processData:false,
+		beforeSend: function(){
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+			},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			//$("#formElem").reset();
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    //e.unbind(); //unbind. to stop multiple form submit.
+
+    
+    });
+
+</script>
+
+<link rel="stylesheet" href="css/formulario.css" >
+<div id="aux">
+ 
+<h2><strong>Registro de imagenes publicitarias</strong></h2>
+ 
+<form name="formElem" id="formElem" action="controladores/publicidad/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="slider">Imagenes para slider/publicidad </label>
+ 
+  <div>
+
+  <span class="completo">
+      <input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar imagen" required="" />
+    
+    </span>
+  <span class="completo">
+  
+ <span class="tercio">
+
+    <input type="radio" name="cual" value="slider">Slider</input>
+    
+  
+  </span>
+  <span class="dostercios">
+  
+	<input type="radio" name="cual" value="folleto">Folleto</input>
+
+  </span>
+
+  </div>
+  
+  <p class="ayuda">Tienes que seleccionar una opción</p>
+</li>
+
+<li class="botones">
+<input type="hidden" name="btnPublicidad" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar imagen &rarr;" />
+  
+  <div id="wait"></div>
+</li>
+ 
+ 
+</ul>
+</form>
+<div id="dialog" title="Mensaje de servidor">
+</div> 
+</div>
+
+
+<div id="aux">
+
+ <h2><strong>Selecciona una opción</strong></h2>
+  <span class="botoneraSuperior">
+  
+<input type="hidden" name="btnSector" id="btnSector" /> 
+
+<select name="cual"  id="listaSector" placeholder="Seleccionae el sector">
+<option>Slider</option>
+<option>Publicidad</option>
+</select>
+
+  <input name="btnBuscar" type="button"  class="btnBuscar" id="btnBuscar" value="Ver imagenes&rarr;" />
+  <button id="elim_Publicidad" class="eliminar"  title="Eliminar registro" />
+    </span> 
+ 
+    </div>
+    
+   
+    
+</div>
+
+<section class="ver">
+
+
+</section>
+        
+    

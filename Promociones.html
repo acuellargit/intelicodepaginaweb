@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="css/formularioContacto.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+	$(document).ready(function(e) {
+		buscar_publicidad();
+		
+	
+        function buscar_publicidad()
+		{
+		var postData = { btnPublicidad: "Buscar", tipo_busqueda: "3" };
+		var formURL= "controladores/publicidad/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function()
+			{
+				$(".listCliente").html("<img src='images/loading.gif'  />");
+				
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$(".listCliente").html(data);
+				
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+	
+			}
+    });
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+<link rel="stylesheet" type="text/css" href="css/tablas.css" />
+
+
+<div id="completoSoporte">
+
+
+<div id="menuTab">
+<h3 style="color:#F60; margin-left:140px;">Promociones :::: ></h3>
+<!--
+<div id="frmBolsa">
+
+</div>
+-->
+
+<div class="listCliente">
+  
+ 
+</div>
+
+</div>
+
+</div>

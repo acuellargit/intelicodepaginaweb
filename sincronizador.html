@@ -1,0 +1,65 @@
+<script>
+$(document).ready(function(e) {
+    
+
+	$('#diagrama').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		});
+</script>
+
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="img/sincronizador.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Reportes y Sincronizador
+></h3>
+<p>
+En esta aplicación veremos como sincronizar la información de una base de datos a otra simplemente con el acceso del internet, con esto optimizamos tiempo en  crear una doble captura, se configura y se sincroniza al la BD destino.
+</p>
+<p>
+
+En esta aplicación veremos como realizar un reporte sin necesidad de programar, estos reportes se guarda en nuestra base de datos y se puede exportar al formato *.fr3 para su envió y consulta en las base de datos de la misma estructura.
+</p>
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<ul>
+<li>Creaciones de reportes por el usuario</li>
+<li>Sincronización 
+de la información</li>
+<li id="diagrama">Diagrama de interconectividad</li>
+</ul>
+
+
+<br/>
+</section>
+
+</div>

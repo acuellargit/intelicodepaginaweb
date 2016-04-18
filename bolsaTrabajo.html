@@ -1,0 +1,129 @@
+<link rel="stylesheet" href="css/formularioContacto.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+	$(document).ready(function(e) {
+		buscar_bolsa();
+		
+		$("#frmPostulante").submit(function(e) {
+			
+			
+		
+			enviar_curriculum($(this).val());
+			
+		
+            e.preventDefault();
+        });
+		
+		function enviar_curriculum(v)
+		{
+			$("#vacante").val(v);
+			var postData = new FormData($("#frmPostulante")[0]);
+			var formURL= "controladores/postulante/controller.php";
+			$.ajax(
+			{
+				url : formURL,
+				type: "POST",
+				data : postData,
+				contentType:false,
+			    processData:false,
+				beforeSend: function()
+				{
+					$("#frmBolsa").html("<img src='images/loading.gif'  />");
+					
+				},
+				success:function(data, textStatus, jqXHR) 
+				{	
+				//alert(data);
+				$("#dialog").html("<p>"+data+"</p>");
+				$( "#dialog" ).dialog();
+				$("#frmBolsa").empty();
+					buscar_bolsa();
+					$('#frmPostulante').each (function(){
+				  this.reset();
+				});
+				},
+				error: function(jqXHR, textStatus, errorThrown) 
+				{
+					alert("error al cargar los datos");
+					//if fails      
+				}
+			});	
+		}		
+		
+        function buscar_bolsa()
+		{
+		var postData = { btnVacante: "Buscar", tipo_busqueda: "1" };
+		var formURL= "controladores/vacante/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function()
+			{
+				$(".listCliente").html("<img src='images/loading.gif'  />");
+				
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$(".listCliente").html(data);
+				
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+	
+			}
+    });
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+<link rel="stylesheet" type="text/css" href="css/tablas.css" />
+
+
+<div id="completoSoporte">
+
+
+<div id="menuTab">
+<h3 style="color:#F60; margin-left:140px;">Bolsa de trabajo ></h3>
+<!--
+<div id="frmBolsa">
+
+</div>
+-->
+
+<div class="listCliente">
+  
+  </div>
+
+<div class="container">
+	<section id="content">
+		<form action="controladores/postulante/controller.php" method="post" id="frmPostulante">
+			<h1>Postulante</h1>
+            <div>
+				<input type="text" id="archivo" name="vacante" value="" placeholder="Vacante a postular" required="" />
+			</div>
+			<div>
+				<input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar archivo" required="" />
+			</div>
+			<div>
+            	<input type="hidden" name="vacante" id="vacante" />
+            	<input type="hidden" name="btnPostulante" value="Registrar" />
+				<input type="submit" value="Enviar curriculum" />
+			</div>
+		</form><!-- form -->
+        <div id="dialog"></div>
+		
+	</section><!-- content -->
+</div><!-- container -->
+</div>
+
+</div>
+

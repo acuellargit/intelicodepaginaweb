@@ -1,0 +1,123 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+    
+	consultarProducto();
+				function consultarProducto(){
+			var postData = { btnProducto: "Buscar",tipo_busqueda:"3"};
+    var formURL = "controladores/producto/controller.php";
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#moduloDescripcion").html(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+
+		
+	}
+	
+        
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = new FormData($("#formElem")[0]);
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		contentType:false,
+		processData:false,
+		beforeSend: function(){
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+			},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    
+    });
+
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de actualizaciones de los productos</strong></h2>
+
+<form name="formElem" id="formElem" action="controladores/productoActualizado/controller.php" method="post">
+<ul>
+
+
+<li class="izquierda">
+  
+  <label class="titulo" for="nombre">Datos generales<span class="requerido">*</span></label>
+  <div>
+ 
+    <span class="completo">
+  
+ <div id="moduloDescripcion"></div>
+    </span>
+  </div>
+ 
+  <p class="ayuda">Selecciona el modulo al que se le agregará la actualización</p>
+</li>
+ 
+ 
+ 
+  
+<li class="derecha">
+  <label class="titulo" for="contacto">Archivo descargable </label>
+ 
+  <div>
+  <span class="completo">
+      <input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar archivo" required="" />
+    
+    </span>
+ 
+  </div>
+</li>
+ 
+ 
+
+
+<li class="botones">
+<input type="hidden" name="btnProductoActualizado" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar modulo actualizado&rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

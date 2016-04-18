@@ -1,0 +1,149 @@
+
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+<script>
+$(document).ready(function(e) {
+	
+	$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+		
+	$('#obra1').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de avances programados diarios ></h3><span id="obra1Imagen"><img class="box_imgpeque" src="img/imagenes/obras1.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#obra1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/obras1.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		$('#obra2').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Distribución de anexo c vs anexo de erogaciones mensuales ></h3><span id="obra2Imagen"><img class="box_imgpeque" src="img/imagenes/obras2.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#obra2Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/obras2.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+			
+		$('#obra3').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de avances reales y avances financieros ></h3><span id="obra3Imagen"><img class="box_imgpeque" src="img/imagenes/obras3.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#obra3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/obras3.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+			$('#obra4').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de generadores y estimaciones ></h3><span id="obra4Imagen"><img class="box_imgpeque" src="img/imagenes/obras4.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#obra4Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/obras4.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+			$('#ventas6').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Líneas de Tiempos ></h3><span id="ventas6Imagen"><img src="img/imagenes/ventas6.png" width="466" height="368"/></span>');
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+		 $('#obra5').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+})
+</script>
+
+
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/obras.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Seguimientos de obras ></h3>
+<p>
+Control y administración de generadores en forma general y por despiezado, además el sistema cuenta con todos los formatos  de acuerdo al procedimiento de PEMEX.
+</p>
+<p>
+El sistema cuenta con módulos para la generación de estimaciones, resúmenes de generación y formatos desglosados de estimaciones.
+</p>
+
+
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li>Elabora Reportes diarios</li>
+        <li>Elabora Graficas de Seguimiento y productividad</li>
+    <li>Elabora Generadores de acuerdo a procedimientos de nuestros Clientes</li>
+    <li>Elabora Álbum fotográficos</li>
+        <li>Elabora Libro de Proyectos y Gerenciales</li>     
+<li> Elabora Reportes de Tiempos inactivos, Retenciones, Penalizaciones y Ajustes de Costos</li>          
+<li>Enlace a módulos de Almacén, Control Administrativo para realizar controles y trazabilidades de Materiales, Control de Ingresos.</li>      
+</ol>
+
+
+
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<ul>
+<li id="obra1">Generación de avances programados diarios</li>
+<li id="obra2">Distribución de anexo c vs anexo de erogaciones mensuales</li>
+<li id="obra3">Control de avances reales y avances financieros</li>
+<li id="obra4">Generación de informes del proyecto</li>
+<li id="obra5">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>
+

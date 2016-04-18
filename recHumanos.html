@@ -1,0 +1,120 @@
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+<script>
+$(document).ready(function(e) {
+		
+		$(".inicio_i").click(function(e) {
+		$(document).attr("location","index.html");
+        });
+		
+		$('#recHumanos1').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Control de Empleados ></h3><span id="recHumanos1Imagen"><img class="box_imgpeque" src="img/imagenes/rec1.png" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#recHumanos1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/rec1.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+			
+		$('#recHumanos2').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Control de Equipo de Seguridad></h3><span id="recHumanos2Imagen"><img class="box_imgpeque" src="img/imagenes/rec2.png" width="466" height="368"/></span><div class="box_imggrande"></div>')
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#recHumanos2Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/rec2.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		
+			$('#recHumanos3').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Credenciales></h3><span id="recHumanos3Imagen"><img class="box_imgpeque" src="img/imagenes/rec3.png" width="466" height="368"/></span><div class="box_imggrande"></div>')
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#recHumanos3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/rec3.png',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		 $('#recHumanos4').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+})
+</script>
+
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/humanos.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Recursos Humanos
+></h3>
+<p>
+ERP INTELIGENT es una solución inteligente que organiza y depura la información relacionada con los recursos humanos, aumentando drasticamente la efiencia administrativa y del personal.
+</p>
+
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li>Elabora Control de Kardex Electrónico</li>
+    <li>Elabora Requisiciones de Personal, Control de Asignación de Recursos</li>
+    <li>Genera Contratos, Finiquitos y  Control de Guardias</li>
+    <li>Elabora Control de Empleados, Asignación de Frentes de Trabajos</li>
+    <li>Elabora Credenciales, Carta de Recomendación, Fuente de Informacion a Modulos de Nominas</li>   
+    <li>Enlace a módulos de Precios Unitarios, Control Administrativo, para  Requisición de personal y Administración de Gastos por Empleados</li>   
+       
+</ol>
+
+</section>
+</article>
+
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<ul>
+<li id="recHumanos1">Control de Empleados</li>
+<li id="recHumanos2">Control de Equipo de Seguridad</li>
+<li id="recHumanos3">Credenciales </li>
+<li id="recHumanos4">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>

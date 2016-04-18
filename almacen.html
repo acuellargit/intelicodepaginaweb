@@ -1,0 +1,149 @@
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+      <link href="css/jquery-ui-1.7.2.css" rel="stylesheet" type="text/css" />
+         <link href="css/colorbox.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.colorbox.js"></script>
+
+<script>
+$(document).ready(function(e) {
+	
+	$('#almacen1').click(function(e) {
+			
+			$( "#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Ordenes de Compra ></h3><span id="almacen1Imagen"><img class="box_imgpeque" src="img/imagenes/almacen1.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();//headerGeneral
+			
+				$("#almacen1Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen1.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		   
+		});
+		
+		$('#almacen4').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Control de Materiales ></h3><span id="almacen4Imagen"><img class="box_imgpeque" src="img/imagenes/almacen4.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();
+			$("#almacen4Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen4.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+		});
+		
+		$('#almacen3').click(function(){
+			
+			$("#imagen" ).empty();
+			
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Requisicion > </h3><span id="almacen3Imagen"><img class="box_imgpeque" src="img/imagenes/almacen3.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$("#almacen3Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen3.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+
+$('#almacen5').click(function(){
+	$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Entradas y Salidas de Material ></h3><span id="almacen5Imagen"><img class="box_imgpeque" src="img/imagenes/almacen5.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();
+			$("#almacen5Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen5.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+		
+		$('#almacen6').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Ordenes de Compra ></h3><span id="almacen6Imagen"><img class="box_imgpeque" src="img/imagenes/almacen6.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();
+			$("#almacen6Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen6.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+		$('#almacen7').click(function(){
+			$( "#imagen" ).empty();
+			$('#imagen').html('<h3 align="center" style="color:#F60">Pantalla de Trazabilidad de Materiales ></h3><span id="almacen7Imagen"><img class="box_imgpeque" src="img/imagenes/almacen7.jpg" width="466" height="368"/></span><div class="box_imggrande"></div>');
+			$( "#descripcionmodulo" ).empty();
+			$("#almacen7Imagen").click(function(e) {
+                    $.colorbox({href:'http://www.inteli-code.com.mx/img/imagenes/almacen7.jpg',open:true,iframe:true,width:"60%", innerHeight:'70%',close:'Cerrar Ventana'});
+                });
+			
+			$( "#descripcionmodulo" ).empty();
+		});
+		
+$('#almacen8').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "servicio.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('implementacion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('implementacion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+
+})
+
+</script>
+<div id="solucionPaginas">
+<article id="principal">
+<section id="imagen">
+<img src="images/almacen.jpg"/>
+</section>
+
+<section id="descripcionmodulo">
+<h3 align="center" style="color:#F60">Control Almacen ></h3>
+<p>El sistema cuenta con un módulo completo para la administración y control de materiales, dentro de este módulo es posible administrar el tipo de materiales, la fecha de caducidad, su composición en el almacén,  así como su distribución.</p>
+<p>
+De igual forma es posible controlar los stocks mínimo y máximo, la familia de materiales y el proveedor al que están adjuntos los materiales.</p>
+<p>Dentro de las actividades que puede usted realizar son:</p>
+
+<ol class="lista-rectangular">
+    <li >Elaborar Requisiciones</li>
+      <li >Elaborar Ordenes de Compras</li>
+    <li >Elaborar Cotizaciones</li>
+     <li>Elaborar Recomendación de mejores Proveedores</li>
+    <li >Elaborar trazabilidades de Materiales</li>
+    <li>Elaborar Entradas y Salidas de Materiales</li>
+    <li>Elaborar Control  de Inventario</li>     
+<li>Administrar N Almacenes</li>  
+    <li>Enlace a módulos de Recursos Humanos, Control Administrativo, para Requisición de personal y Administración de Materiales</li>   
+     
+</ol>
+
+</section>
+</article>
+
+<section id="modulos">
+<h3><span>SUBMODULOS</span></h3>
+<br/>
+<ul>
+<li id="almacen1">Ordenes de Compra</li>
+<li id="almacen3">Requisiciones</li>
+<li  id="almacen4">Control de Materiales</li>
+<li id="almacen5">Entradas y Salidas de Material</li>
+<li id="almacen7">Trazabilidad de Materiales</li>
+<li id="almacen8">Diagrama de interconectividad</li>
+<li class="inicio_i">Regresar a inicio</li>
+</ul>
+<br/>
+</section>
+
+</div>

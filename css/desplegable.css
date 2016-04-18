@@ -1,0 +1,33 @@
+.desplegable,
+a[name='more']:target ~ .ver_mas {
+visibility: hidden;
+width: 0px;
+height: 0px;
+min-height: 0px;
+background: #f5f5f5;
+-webkit-transition: 1s;
+transition: 1s;
+min-height: 0px;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), 0 -15px 15px -12px rgba(0, 0, 0, 0.35);
+}
+a[name='more']:target ~ .desplegable {
+visibility: visible;
+width: 100%;
+min-height: 300px;
+opacity: 1;
+-webkit-transition: 1s;
+transition: 1s;
+height: auto;
+background: #f0f0f0;
+padding: 1rem;
+}
+a[name='more']:target ~ .ver_mas {
+-webkit-transition: 0;
+transition: 0;
+display: none;
+}
+.desplegable, .desplegable p {
+font-family: rokkitt,garamond,serif;
+font-size: 1.2rem;
+} 
+

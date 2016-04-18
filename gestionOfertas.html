@@ -1,0 +1,122 @@
+
+
+<script>
+
+	$(document).ready(function(e) {
+    
+		consultarProducto();
+				function consultarProducto(){
+			var postData = { btnProducto: "Buscar",tipo_busqueda:"3"};
+    var formURL = "controladores/producto/controller.php";
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#moduloDescripcion").html(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+
+		
+	}
+	
+        
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = new FormData($("#formElem")[0]);
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		contentType:false,
+		processData:false,
+		beforeSend: function(){
+			$("#wait").html("<img src='images/loading2.gif' height='35' />");
+			},
+        success:function(data, textStatus, jqXHR) 
+        {
+		    //alert(data);
+			$("#wait").empty();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			$("#dialog").html("<p>"+data+"</p>");
+			$( "#dialog" ).dialog();
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de ofertas sobre los productos</strong></h2>
+
+ 
+<form name="formElem" id="formElem" action="controladores/productoOferta/controller.php" method="post">
+<ul>
+
+
+<li class="izquierda">
+  
+  <label class="titulo" for="nombre">Datos generales<span class="requerido">*</span></label>
+  <div>
+ 
+    <span class="completo">
+             <div id="moduloDescripcion"></div>
+    </span>
+  </div>
+  <p class="ayuda">Selecciona el modulo al que se le aplicará el descuento</p>
+</li>
+ 
+ 
+ 
+  
+<li class="derecha">
+  <label class="titulo" for="contacto">Descuento </label>
+ 
+  <div>
+   <span class="completo">
+      <input id="descuento" name="descuento" value="" placeholder="Porcentaje de descuento" required="required"/>
+    </span>
+ 
+  </div>
+</li>
+ 
+ 
+
+
+<li class="botones">
+<input type="hidden" name="btnProductoOferta" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar descuento &rarr;" />
+   <div id="wait"></div>
+
+</li>
+ 
+</ul>
+</form>
+ <div id="dialog" title=""></div>
+</div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<link rel="stylesheet" href="css/formularioContacto.css">
+
+<script>
+	$(document).ready(function(e) {
+        $("#frmContacto").submit(function(e)
+		{
+	
+		var postData = $(this).serializeArray();
+		var formURL =  $(this).attr("action");
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function(){
+				$("#wait").html("<img src='images/loading2.gif' height='35' />");
+				},
+			success:function(data, textStatus, jqXHR) 
+			{
+				alert(data);
+				$("#wait").empty();
+				$('#frmContacto').each (function(){
+				  this.reset();
+				});
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				//if fails      
+			}
+		});
+		e.preventDefault(); //STOP default action
+		
+	
+		});
+    });
+</script>
+</head>
+
+<body>
+
+<div class="container">
+	<section id="content">
+		<form action="controladores/email/controller.php" id="frmContacto">
+			<h1>Contacto</h1>
+			<div>
+				<input type="text" placeholder="Nombre" required="" id="username" name="nombre" />
+			</div>
+            <input type="tel" placeholder="Telefono" required="" id="telefono" name="telefono" />
+			<div>
+            
+            </div>
+            <input type="email" placeholder="Email" required="" id="email" name="email" />
+			<div>
+            
+             </div>
+            <input type="text" placeholder="Asunto" required="" id="asunto" name="asunto" />
+			<div>   
+            
+            </div>
+            <input type="text" placeholder="Comentario" required="" id="comentario" name="comentario" />
+			<div>   
+                  
+			</div>
+			<div>
+            	<input type="hidden" name="btnContacto" value="Enviar" />
+				<input type="submit" value="Enviar" />
+			</div>
+		</form><!-- form -->
+        <div id="wait"></div>
+		
+	</section><!-- content -->
+</div><!-- container -->
+<div id="dialog" title=""></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+
+<script>
+
+	$(document).ready(function(e) {
+        
+
+	$("#formElem").submit(function(e)
+	{
+
+	var postData = new FormData($("#formElem")[0]);
+    var formURL =  $(this).attr("action");
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        data : postData,
+		contentType:false,
+		processData:false,
+        success:function(data, textStatus, jqXHR) 
+        {
+		    alert(data);
+			//$("#formElem").reset();
+			$('#formElem').each (function(){
+			  this.reset();
+			});
+			
+			
+		
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails      
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind(); //unbind. to stop multiple form submit.
+
+    });
+    });
+
+</script>
+<link rel="stylesheet" href="css/formulario.css">
+<div id="aux">
+ 
+<h2><strong>Registro de noticias</strong></h2>
+ 
+<form name="formElem" id="formElem" action="controladores/noticia/controller.php" method="post">
+<ul>
+
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Información <span class="requerido">*</span></label>
+ 
+  <div>
+
+  <span class="completo">
+      <input id="tituloNota" name="tituloNota" value="" placeholder="Título de la  nota" required="" />
+    </span>
+  <span class="completo">
+  <textarea id="nota" name="nota" value="" placeholder="Nota completa" required="" />
+  </textarea>
+    </span>
+
+  </div>
+ 
+</li>
+
+<li class="derecha">
+  <label class="titulo" for="contacto">Imagen de la nota </label>
+ 
+  <div>
+  <span class="completo">
+      <input type="file" id="archivo" name="archivo" value="" placeholder="Seleccionar archivo" required="" />
+    
+    </span>
+ 
+  </div>
+</li>
+
+<li class="botones">
+<input type="hidden" name="btnNota" value="Registrar" /> 
+  <input id="alta" type="submit" value="Registrar noticia &rarr;" />
+</li>
+ 
+</ul>
+</form>
+ 
+</div>

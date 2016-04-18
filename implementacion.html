@@ -1,0 +1,165 @@
+<script>
+$(document).ready(function(e) {
+	
+		 $('#VerRecHumanos').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('recHumanos.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('recHumanos.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		 $('#VerNomina').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('nomina.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('nomina.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		 $('#VerVentas').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('ventas.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('ventas.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		
+		 $('#VerAdministrativo').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('administracion.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('administracion.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		$('#VerObras').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('obras.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('obras.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+		
+		$('#VerAlmacen').click(function(){
+			  $("#wait").html("<img src='images/loading2.gif'  />");
+				
+			$( "#contenido" ).empty();
+			 if(!$("#menuTab").length)
+			{
+				$( "#contenido" ).load( "software.html",function( response, status, xhr ) {
+					
+					$('#menuTab').load('almacen.html');
+					$("#wait").empty();
+					$("#wait").hide();	
+					//load('localizar.html');
+				});
+				
+			}else
+			{
+				$('#menuTab').load('almacen.html');
+				$("#wait").empty();
+				$("#wait").hide();
+			}
+			
+		});
+});
+</script>
+		
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+
+
+<div id="solucionPaginas">
+<article id="principalModulo">
+<h3 style="color:#F60; margin-left:140px;">Interconectividad de modulos ></h3>
+
+<section id="imagen">
+<img src="img/interconectividad2.png" width="851"/>
+</section>
+
+<aside id="VerRecHumanos">&nbsp;&nbsp;</aside>
+<aside id="VerNomina">&nbsp;&nbsp;</aside>
+<aside id="VerVentas">&nbsp;&nbsp;</aside>
+<aside id="VerAdministrativo">&nbsp;&nbsp;</aside>
+<aside id="VerObras">&nbsp;&nbsp;</aside>
+<aside id="VerAlmacen">&nbsp;&nbsp;</aside>
+
+</article>
+
+</div>

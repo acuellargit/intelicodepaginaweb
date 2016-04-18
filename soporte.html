@@ -1,0 +1,111 @@
+<script>
+		buscar_producto();
+		function buscar_producto()
+		{
+		var postData = { btnProducto: "Buscar", tipo_busqueda: "2" };
+		var formURL= "controladores/producto/controller.php";
+		$.ajax(
+		{
+			url : formURL,
+			type: "POST",
+			data : postData,
+			beforeSend: function(){
+			$("#cbp-wm").html("<img src='images/loading2.gif' />");
+			},
+			success:function(data, textStatus, jqXHR) 
+			{	
+				//alert(data);
+				$("#cbp-wm").empty();
+				$("#cbp-wm").html(data);
+				
+			},
+			error: function(jqXHR, textStatus, errorThrown) 
+			{
+				alert("error al cargar los datos");
+				//if fails      
+			}
+		});	
+		}
+</script>
+
+
+
+<link rel="stylesheet" type="text/css" href="css/opciones.css" />
+
+
+<div id="completoSoporte">
+
+
+<div id="menuTab">
+<h3 style="color:#F60; margin-left:140px;">Nuestros productos ></h3>
+<div id="cbp-wm" class="cbp-vm-switcher cbp-vm-view-grid">
+
+<!--<ul>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+<li>
+<a class='cbp-vm-image' href='#'><img  src="img/caja.png" width='100' height='100'></a>
+<h3 class='cbp-vm-title'>Modulo::Almacen</h3>
+<div class='cbp-vm-price'>$300</div>
+<div class='cbp-vm-details'>Controla almacen</div>
+<div class='cbp-vm-add' >Descargar</div>
+</li>
+
+</ul>-->
+
+</div>
+</div>
+
+</div>
+
